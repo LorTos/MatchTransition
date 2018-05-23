@@ -18,7 +18,7 @@ public class MatchTransitionConfigurator: NSObject, UIViewControllerTransitionin
     private let transition = MatchTransition()
     private let objectCreator = ObjectCreator()
     
-    public static var match: MatchTransitionConfigurator!
+    private static var match: MatchTransitionConfigurator!
     private var matches: [Match] = []
     
     public static func create(from cell: UITableViewCell, to controller: UIViewController, matching matches: [Match]) {

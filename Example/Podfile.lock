@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MatchTransition: 6839954a389af88bf7124c67a552d9dae3c1803f
+  MatchTransition: e542f59f34212fa177147b0ed0948d29ee72dda4
 
 PODFILE CHECKSUM: a6d45d2cfa5b107b26bf5b5c8dd24c03f4506c90
 
