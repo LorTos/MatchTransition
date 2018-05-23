@@ -8,9 +8,9 @@
 import UIKit
 
 public struct Match {
-    var tag: String
-    var from: UIView
-    var to: UIView
+    public var tag: String
+    public var from: UIView
+    public var to: UIView
 }
 
 public class MatchTransitionConfigurator: NSObject, UIViewControllerTransitioningDelegate {
