@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MatchTransition_Example' do
+  pod 'MatchTransition', :path => '../'
+
+  target 'MatchTransition_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
