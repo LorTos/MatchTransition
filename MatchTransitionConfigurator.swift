@@ -18,15 +18,15 @@ public class MatchTransitionConfigurator: NSObject, UIViewControllerTransitionin
     private let transition = MatchTransition()
     private let objectCreator = ObjectCreator()
     
-    static var match: MatchTransitionConfigurator!
+    public static var match: MatchTransitionConfigurator!
     private var matches: [Match] = []
     
-    static func create(from cell: UITableViewCell, to controller: UIViewController, matching matches: [Match]) {
+    public static func create(from cell: UITableViewCell, to controller: UIViewController, matching matches: [Match]) {
         match = MatchTransitionConfigurator()
         match.matches = matches
         match.setupMatch(between: cell, and: controller)
     }
-    static func create(from cell: UICollectionViewCell, at indexPath: IndexPath, inside collection: UICollectionView, to controller: UIViewController, matching matches: [Match]) {
+    public static func create(from cell: UICollectionViewCell, at indexPath: IndexPath, inside collection: UICollectionView, to controller: UIViewController, matching matches: [Match]) {
         match = MatchTransitionConfigurator()
         match.matches = matches
         match.setupMatch(between: cell, at: indexPath, inside: collection, and: controller)
