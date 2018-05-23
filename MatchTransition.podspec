@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MatchTransition'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MatchTransition.'
+  s.summary          = 'A library to make Modal Transitions quick and easy.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -28,7 +28,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/LorTos/MatchTransition.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.3'
 
   s.source_files = 'MatchTransition/Classes/**/*'
   

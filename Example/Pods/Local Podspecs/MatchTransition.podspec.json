@@ -1,0 +1,22 @@
+{
+  "name": "MatchTransition",
+  "version": "0.1.0",
+  "summary": "A library to make Modal Transitions quick and easy.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/LorTos/MatchTransition",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "LorTos": "lorenzotoscanidc@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/LorTos/MatchTransition.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.3"
+  },
+  "source_files": "MatchTransition/Classes/**/*"
+}

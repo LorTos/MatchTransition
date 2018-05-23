@@ -1,0 +1,6 @@
+framework module MatchTransition {
+  umbrella header "MatchTransition-umbrella.h"
+
+  export *
+  module * { export * }
+}
