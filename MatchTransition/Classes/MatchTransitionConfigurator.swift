@@ -16,7 +16,7 @@ public struct Match {
 public class MatchTransitionConfigurator: NSObject, UIViewControllerTransitioningDelegate {
     
     private let transition = MatchTransition()
-    private let objectCreator = ObjectCreator()
+    private let objectCreator = MatchTransitionObjectCreator()
     
     private static var match: MatchTransitionConfigurator!
     private var matches: [Match] = []
