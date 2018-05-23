@@ -12,11 +12,17 @@
 		6C1555F28B4BC630AD6E60F24886666F /* Pods-MatchTransition_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BC380F8C7815E232522F04A50044575 /* Pods-MatchTransition_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		705F226BF888C0C76E785910EC71EB79 /* Pods-MatchTransition_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 33B23F7E73E905E466E11103DD00AAA2 /* Pods-MatchTransition_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7400727454BFEC1482F52F6508B01DC8 /* MatchTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 426E1C16815A365D890354889A55398C /* MatchTransition-dummy.m */; };
-		8D4C827EC1EFBD289513996BF5986AA8 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98CDDDAA08262044A436E0DFC28260A /* ReplaceMe.swift */; };
 		8F3B45822084727C33EE72EFC650FD7C /* Pods-MatchTransition_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 215F04275F7A308BAED0E2AC837A0DC9 /* Pods-MatchTransition_Example-dummy.m */; };
 		C880CE8D2B17442E339F28EB2E706F30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		EDA9FEE315511991F0DEDF7832046A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		F0242D0E0D12C7431723BA9B43DC752B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		FE2A644F20B5B992001F4AE0 /* MatchTransitionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A644E20B5B992001F4AE0 /* MatchTransitionConfigurator.swift */; };
+		FE2A645320B5B9DD001F4AE0 /* MatchTransitionConfigurator+ObjectCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A645220B5B9DD001F4AE0 /* MatchTransitionConfigurator+ObjectCreator.swift */; };
+		FE2A645520B5BA06001F4AE0 /* MatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A645420B5BA06001F4AE0 /* MatchTransition.swift */; };
+		FE2A645820B5BA40001F4AE0 /* TransitioningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A645720B5BA40001F4AE0 /* TransitioningView.swift */; };
+		FE2A645A20B5BA59001F4AE0 /* TransitioningImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A645920B5BA59001F4AE0 /* TransitioningImageView.swift */; };
+		FE2A645C20B5BA75001F4AE0 /* TransitioningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A645B20B5BA75001F4AE0 /* TransitioningLabel.swift */; };
+		FE2A645E20B5BA8B001F4AE0 /* TransitioningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A645D20B5BA8B001F4AE0 /* TransitioningButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,28 +56,34 @@
 		426E1C16815A365D890354889A55398C /* MatchTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MatchTransition-dummy.m"; sourceTree = "<group>"; };
 		4A7BF57112FC2FA7C56DE56A51201CA3 /* Pods-MatchTransition_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MatchTransition_Example-resources.sh"; sourceTree = "<group>"; };
 		4BC380F8C7815E232522F04A50044575 /* Pods-MatchTransition_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MatchTransition_Example-umbrella.h"; sourceTree = "<group>"; };
-		4F973798209054D9643283AFD0E4A74D /* MatchTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MatchTransition.framework; path = MatchTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F973798209054D9643283AFD0E4A74D /* MatchTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MatchTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		61EDE525D6612942E927434BE99E5248 /* Pods-MatchTransition_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MatchTransition_Tests-dummy.m"; sourceTree = "<group>"; };
 		7135F0F0238F40E9A4F5E4D98E8C799C /* MatchTransition.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MatchTransition.xcconfig; sourceTree = "<group>"; };
 		721BD6F2412B0AE453F1E645841E7636 /* MatchTransition-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MatchTransition-prefix.pch"; sourceTree = "<group>"; };
 		74F87209BBA46DF36E0C3A4A11D5E93D /* Pods-MatchTransition_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MatchTransition_Example.modulemap"; sourceTree = "<group>"; };
 		8A6C34FA7F09BC9140B571938D5A50F9 /* Pods-MatchTransition_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MatchTransition_Tests.modulemap"; sourceTree = "<group>"; };
-		8DEFF14EF7EA3C1C6AFCAD5AD6B4A3B6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		8DEFF14EF7EA3C1C6AFCAD5AD6B4A3B6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		900815AAD6E5752C6FAD0ABF4E1A733B /* MatchTransition.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MatchTransition.modulemap; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9CCAE1C38FA48CBBE493A614B982C064 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		A6B30FDAAAC7F9B4A1A78C74AED3B20E /* Pods_MatchTransition_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MatchTransition_Tests.framework; path = "Pods-MatchTransition_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9CCAE1C38FA48CBBE493A614B982C064 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A6B30FDAAAC7F9B4A1A78C74AED3B20E /* Pods_MatchTransition_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchTransition_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E1E3AAA9F2CC761A2A2B8F48AB95D9 /* Pods-MatchTransition_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MatchTransition_Example-frameworks.sh"; sourceTree = "<group>"; };
 		C08A58409AC6B69D285B56D3EC24A05D /* Pods-MatchTransition_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MatchTransition_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C16877420EAEB37B30D05ECA19B34737 /* MatchTransition-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MatchTransition-umbrella.h"; sourceTree = "<group>"; };
 		C6E3C7E0669B032F0680AA223016873C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D98CDDDAA08262044A436E0DFC28260A /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = MatchTransition/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		DC9D785919E06D7DC2EC0D5B8DBE69C3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E49528A6622D6F73BE40B4383F5EBBAA /* Pods-MatchTransition_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MatchTransition_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		E4A4749DA24111C706F767DF0A80C559 /* Pods_MatchTransition_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MatchTransition_Example.framework; path = "Pods-MatchTransition_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F92F7DF870ECBB673F19673E2E862CC6 /* MatchTransition.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = MatchTransition.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E4A4749DA24111C706F767DF0A80C559 /* Pods_MatchTransition_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchTransition_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92F7DF870ECBB673F19673E2E862CC6 /* MatchTransition.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = MatchTransition.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FAEF9E431E1F039F5F6BC98FE4060DC2 /* Pods-MatchTransition_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MatchTransition_Tests-resources.sh"; sourceTree = "<group>"; };
+		FE2A644E20B5B992001F4AE0 /* MatchTransitionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTransitionConfigurator.swift; sourceTree = "<group>"; };
+		FE2A645220B5B9DD001F4AE0 /* MatchTransitionConfigurator+ObjectCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchTransitionConfigurator+ObjectCreator.swift"; sourceTree = "<group>"; };
+		FE2A645420B5BA06001F4AE0 /* MatchTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTransition.swift; sourceTree = "<group>"; };
+		FE2A645720B5BA40001F4AE0 /* TransitioningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningView.swift; sourceTree = "<group>"; };
+		FE2A645920B5BA59001F4AE0 /* TransitioningImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningImageView.swift; sourceTree = "<group>"; };
+		FE2A645B20B5BA75001F4AE0 /* TransitioningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningLabel.swift; sourceTree = "<group>"; };
+		FE2A645D20B5BA8B001F4AE0 /* TransitioningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +199,10 @@
 		F2D46B92BAEEFB73D74A5D58EDAB1B9D /* MatchTransition */ = {
 			isa = PBXGroup;
 			children = (
-				D98CDDDAA08262044A436E0DFC28260A /* ReplaceMe.swift */,
+				FE2A645420B5BA06001F4AE0 /* MatchTransition.swift */,
+				FE2A644E20B5B992001F4AE0 /* MatchTransitionConfigurator.swift */,
+				FE2A645220B5B9DD001F4AE0 /* MatchTransitionConfigurator+ObjectCreator.swift */,
+				FE2A645620B5BA24001F4AE0 /* TransitioningObjects */,
 				3933B0100CD305F8E48FBCF3CF8C7F65 /* Pod */,
 				F55DE6D6E77F87D7DF0D967EF788600F /* Support Files */,
 			);
@@ -225,6 +240,17 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/MatchTransition";
+			sourceTree = "<group>";
+		};
+		FE2A645620B5BA24001F4AE0 /* TransitioningObjects */ = {
+			isa = PBXGroup;
+			children = (
+				FE2A645720B5BA40001F4AE0 /* TransitioningView.swift */,
+				FE2A645920B5BA59001F4AE0 /* TransitioningImageView.swift */,
+				FE2A645B20B5BA75001F4AE0 /* TransitioningLabel.swift */,
+				FE2A645D20B5BA8B001F4AE0 /* TransitioningButton.swift */,
+			);
+			path = TransitioningObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,8 +369,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE2A645A20B5BA59001F4AE0 /* TransitioningImageView.swift in Sources */,
+				FE2A645E20B5BA8B001F4AE0 /* TransitioningButton.swift in Sources */,
+				FE2A645C20B5BA75001F4AE0 /* TransitioningLabel.swift in Sources */,
+				FE2A645520B5BA06001F4AE0 /* MatchTransition.swift in Sources */,
 				7400727454BFEC1482F52F6508B01DC8 /* MatchTransition-dummy.m in Sources */,
-				8D4C827EC1EFBD289513996BF5986AA8 /* ReplaceMe.swift in Sources */,
+				FE2A644F20B5B992001F4AE0 /* MatchTransitionConfigurator.swift in Sources */,
+				FE2A645820B5BA40001F4AE0 /* TransitioningView.swift in Sources */,
+				FE2A645320B5B9DD001F4AE0 /* MatchTransitionConfigurator+ObjectCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

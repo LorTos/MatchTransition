@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'MatchTransition'
-  s.version          = '0.1.0'
-  s.summary          = 'A library to make Modal Transitions quick and easy.'
+  s.name                  = 'MatchTransition'
+  s.version               = '0.1.0'
+  s.summary               = 'A quick and easy way to create beautiful Modal Transitions.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,26 +17,18 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
+  s.description           = <<-DESC
 TODO: Add long description of the pod here.
-                       DESC
+                          DESC
 
-  s.homepage         = 'https://github.com/LorTos/MatchTransition'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'LorTos' => 'lorenzotoscanidc@gmail.com' }
-  s.source           = { :git => 'https://github.com/LorTos/MatchTransition.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.homepage              = 'https://github.com/LorTos/MatchTransition'
+  s.license               = { :type => 'MIT', :file => 'LICENSE' }
+  s.author                = { 'LorTos' => 'lorenzotoscanidc@gmail.com' }
+  s.source                = { :git => 'https://github.com/LorTos/MatchTransition.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '10.3'
+  s.ios.deployment_target = '10.0'
+  s.swift_version         = '4.0'
 
-  s.source_files = 'MatchTransition/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'MatchTransition' => ['MatchTransition/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files          = 'MatchTransition/Classes/**/*'
+  s.frameworks            = 'UIKit'
 end
