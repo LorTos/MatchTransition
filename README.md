@@ -1,11 +1,18 @@
 <p align="center">
-    <img src="Assets/Banner.svg"
+    <img src="MatchTransition/Assets/Banner.svg" width="62.5%"/>
 </p>
 
-[![CI Status](https://img.shields.io/travis/LorTos/MatchTransition.svg?style=flat)](https://travis-ci.org/LorTos/MatchTransition)
-[![Version](https://img.shields.io/cocoapods/v/MatchTransition.svg?style=flat)](https://cocoapods.org/pods/MatchTransition)
-[![License](https://img.shields.io/cocoapods/l/MatchTransition.svg?style=flat)](https://cocoapods.org/pods/MatchTransition)
-[![Platform](https://img.shields.io/cocoapods/p/MatchTransition.svg?style=flat)](https://cocoapods.org/pods/MatchTransition)
+<p align="center">
+    <img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" />
+    <img src="https://img.shields.io/badge/Platforms-iOS-blue.svg?style=flat" />
+    <a href="https://travis-ci.org/LorTos/MatchTransition">
+        <img src="https://img.shields.io/travis/LorTos/MatchTransition.svg?style=flat" />
+    </a>
+    <a href="https://cocoapods.org/pods/MatchTransition">
+        <img src="https://img.shields.io/cocoapods/v/MatchTransition.svg?style=flat" />
+    </a>
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+</p>
 
 ## Example
 
