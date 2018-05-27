@@ -1,4 +1,6 @@
-# MatchTransition
+<p align="center">
+    <img src="Assets/Banner.svg"
+</p>
 
 [![CI Status](https://img.shields.io/travis/LorTos/MatchTransition.svg?style=flat)](https://travis-ci.org/LorTos/MatchTransition)
 [![Version](https://img.shields.io/cocoapods/v/MatchTransition.svg?style=flat)](https://cocoapods.org/pods/MatchTransition)
