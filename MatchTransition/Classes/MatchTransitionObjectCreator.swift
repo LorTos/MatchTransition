@@ -14,7 +14,7 @@ class MatchTransitionObjectCreator {
     private(set) var tableCell: UITableViewCell?
     private(set) var baseCellAndCollection: ((UICollectionViewCell, IndexPath), UICollectionView)?
     
-    private(set) var tags: Set<Int> = []
+    private(set) var tags: [Int] = []
     
     private(set) var views: [TransitioningView] = []
     private(set) var imageViews: [TransitioningImageView] = []
@@ -24,8 +24,11 @@ class MatchTransitionObjectCreator {
     // Set cell tags and toVC tags first
     func setTag(_ tag: String, for view: UIView) {
         let hash = tag.hashValue
+        
+        if !tags.contains(hash) {
+            tags.append(hash)
+        }
         view.tag = hash
-        tags.insert(hash)
     }
     
     // Then pass the cell to the manager

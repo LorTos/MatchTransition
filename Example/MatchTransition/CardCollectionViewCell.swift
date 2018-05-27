@@ -62,18 +62,4 @@ class CardCollectionViewCell: UICollectionViewCell {
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 6).cgPath
         layer.masksToBounds = false
     }
-    
-    override func layoutSublayers(of layer: CALayer) {
-        super.layoutSublayers(of: layer)
-        
-        if imageOverlay == nil {
-            imageOverlay = CALayer()
-            imageOverlay.backgroundColor = UIColor.black.withAlphaComponent(0.2).cgColor
-            imageOverlay.frame = contentView.bounds
-            backgroundImageView.layer.addSublayer(imageOverlay)
-        } else {
-            imageOverlay.frame = contentView.bounds
-            layoutSublayers(of: backgroundImageView.layer)
-        }
-    }
 }

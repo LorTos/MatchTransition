@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MatchTransition
 
 private let reuseIdentifier = "CardCollectionViewCell"
 
@@ -40,6 +41,33 @@ class CollectionViewController: UICollectionViewController {
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedLocation = data[indexPath.row]
+        let selectedCell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        
+        detailsViewController.selectedCard = selectedLocation
+        
+        MatchTransitionConfigurator.create(from: selectedCell, at: indexPath, inside: collectionView, to: detailsViewController, matching: [
+            Match(tag: "container", from: selectedCell.contentView, to: detailsViewController.view),
+            Match(tag: "imageView", from: selectedCell.backgroundImageView, to: detailsViewController.backgroundImageView),
+            Match(tag: "title", from: selectedCell.mainTitleLabel, to: detailsViewController.locationTitleLabel),
+            Match(tag: "pinImage", from: selectedCell.pinImageView, to: detailsViewController.pinImageView),
+            Match(tag: "location", from: selectedCell.locationLabel, to: detailsViewController.locationLabel),
+            Match(tag: "nextDateString", from: selectedCell.nextDateLabel, to: detailsViewController.nextDateLabel),
+            Match(tag: "month", from: selectedCell.monthLabel, to: detailsViewController.monthLabel),
+            Match(tag: "dateView1", from: selectedCell.dateView1, to: detailsViewController.dateView1),
+            Match(tag: "dateLabel1", from: selectedCell.dateLabel1, to: detailsViewController.dateLabel1),
+            Match(tag: "dateView2", from: selectedCell.dateView2, to: detailsViewController.dateView2),
+            Match(tag: "dateLabel2", from: selectedCell.dateLabel2, to: detailsViewController.dateLabel2),
+            Match(tag: "dateView3", from: selectedCell.dateView3, to: detailsViewController.dateView3),
+            Match(tag: "dateLabel3", from: selectedCell.dateLabel3, to: detailsViewController.dateLabel3),
+        ])
+        
+        present(detailsViewController, animated: true, completion: nil)
+    }
 }
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {

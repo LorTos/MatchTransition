@@ -41,13 +41,13 @@
                         <rect key="frame" x="16" y="193.5" width="279" height="24"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="I4Q-cS-Wil">
-                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <rect key="frame" x="0.0" y="0.5" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="I4Q-cS-Wil" secondAttribute="height" multiplier="1:1" id="fGy-hP-Tl2"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THAILAND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4o-uZ-jMN">
-                                <rect key="frame" x="32" y="4.5" width="247" height="19.5"/>
+                                <rect key="frame" x="32" y="5" width="247" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -93,14 +93,14 @@
                                             <constraint firstItem="2CG-Gi-mtn" firstAttribute="top" secondItem="1Kr-84-EdZ" secondAttribute="top" constant="6" id="y9l-xh-pCJ"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="kLG-88-bBK">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="kLG-88-bBK">
                                         <rect key="frame" x="111.5" y="0.0" width="167.5" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwD-yf-3PZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeQ-5n-kCT">
-                                                        <rect key="frame" x="9" y="10.5" width="27.5" height="29"/>
+                                                        <rect key="frame" x="11.5" y="10.5" width="27.5" height="29"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -109,14 +109,15 @@
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="PeQ-5n-kCT" firstAttribute="centerY" secondItem="BwD-yf-3PZ" secondAttribute="centerY" id="MdV-qr-nif"/>
+                                                    <constraint firstAttribute="width" secondItem="BwD-yf-3PZ" secondAttribute="height" multiplier="1:1" id="f5G-pa-EE9"/>
                                                     <constraint firstItem="PeQ-5n-kCT" firstAttribute="centerX" secondItem="BwD-yf-3PZ" secondAttribute="centerX" id="j66-un-UN6"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CxZ-uK-Xz0">
-                                                <rect key="frame" x="61" y="0.0" width="45.5" height="50"/>
+                                                <rect key="frame" x="59" y="0.0" width="50" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfc-4b-zmJ">
-                                                        <rect key="frame" x="8.5" y="10.5" width="28" height="29"/>
+                                                        <rect key="frame" x="11" y="10.5" width="28" height="29"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -125,14 +126,15 @@
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="Qfc-4b-zmJ" firstAttribute="centerY" secondItem="CxZ-uK-Xz0" secondAttribute="centerY" id="7Dm-6p-zNJ"/>
+                                                    <constraint firstAttribute="width" secondItem="CxZ-uK-Xz0" secondAttribute="height" multiplier="1:1" id="WCV-39-jnB"/>
                                                     <constraint firstItem="Qfc-4b-zmJ" firstAttribute="centerX" secondItem="CxZ-uK-Xz0" secondAttribute="centerX" id="g0E-Th-Hsv"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NpT-Lf-dtV">
-                                                <rect key="frame" x="122.5" y="0.0" width="45" height="50"/>
+                                                <rect key="frame" x="117.5" y="0.0" width="50" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMm-B8-5b7">
-                                                        <rect key="frame" x="7" y="10.5" width="30.5" height="29"/>
+                                                        <rect key="frame" x="10" y="10.5" width="30.5" height="29"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -140,6 +142,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="NpT-Lf-dtV" secondAttribute="height" multiplier="1:1" id="ALj-OO-rd5"/>
                                                     <constraint firstItem="uMm-B8-5b7" firstAttribute="centerY" secondItem="NpT-Lf-dtV" secondAttribute="centerY" id="d3D-FK-lwR"/>
                                                     <constraint firstItem="uMm-B8-5b7" firstAttribute="centerX" secondItem="NpT-Lf-dtV" secondAttribute="centerX" id="s33-up-PJq"/>
                                                 </constraints>
