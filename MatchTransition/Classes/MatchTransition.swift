@@ -53,7 +53,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
             setupDismissalAnimation(transitionContext)
             detailsView.removeFromSuperview()
             containerView.addSubview(initialView)
-            containerView.sendSubview(toBack: initialView)
+            containerView.sendSubviewToBack(initialView)
             initialView.alpha = 1
             dismissalAnimation(transitionContext)
         }
@@ -63,7 +63,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
     private func setupPresentingAnimation(_ transitionContext: UIViewControllerContextTransitioning, _ fromView: UIView) {
         blurView.effect = nil
         transitionContext.containerView.addSubview(blurView)
-        if let container = transitioningViews.filter({ $0.isBaseContainer }).first {
+        if let container = transitioningViews.first(where: { $0.isBaseContainer }) {
             container.frame = container.initialFrame
             container.backgroundColor = container.initialBackgroundColor
             if container.initialCornerRadius != 0 || container.finalCornerRadius != 0  {
@@ -116,7 +116,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: 0.25, delay: transitionDuration - 0.15, options: .curveEaseInOut, animations: {
             detailsView.alpha = 1
         }) { _ in
-            containerView.bringSubview(toFront: toView)
+            containerView.bringSubviewToFront(toView)
         }
         UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.transitioningViews.forEach({ view in
@@ -149,7 +149,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK: - Dismissal Animation
     private func setupDismissalAnimation(_ transitionContext: UIViewControllerContextTransitioning) {
         blurView.effect = UIBlurEffect(style: .light)
-        if let container = transitioningViews.filter({ $0.isBaseContainer }).first {
+        if let container = transitioningViews.first(where: { $0.isBaseContainer }) {
             container.frame = container.finalFrame
             container.backgroundColor = container.finalBackgroundColor
             if container.initialCornerRadius != 0 || container.finalCornerRadius != 0  {

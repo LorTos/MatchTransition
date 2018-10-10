@@ -49,7 +49,7 @@ class MatchTransitionObjectCreator {
         tags.forEach { tag in
             guard let transitioningObject = viewController.view.viewWithTag(tag) else { return }
             if let button = transitioningObject as? UIButton {
-                if let existingButton = buttons.filter({ $0.nameID == tag }).first {
+                if let existingButton = buttons.first(where: { $0.nameID == tag }) {
                     let convertedFrame = button.convert(button.bounds, to: UIScreen.main.coordinateSpace)
                     existingButton.finalFrame = convertedFrame
                     existingButton.finalTextFont = button.titleLabel?.font
@@ -58,20 +58,20 @@ class MatchTransitionObjectCreator {
                     existingButton.finalCornerRadius = button.layer.cornerRadius
                 }
             } else if let label = transitioningObject as? UILabel {
-                if let existingLabel = labels.filter({ $0.nameID == tag }).first {
+                if let existingLabel = labels.first(where: { $0.nameID == tag }) {
                     let convertedFrame = label.convert(label.bounds, to: UIScreen.main.coordinateSpace)
                     existingLabel.finalFrame = convertedFrame
                     existingLabel.finalFont = label.font
                     existingLabel.finalTextColor = label.textColor
                 }
             } else if let imageView = transitioningObject as? UIImageView {
-                if let existingImageView = imageViews.filter({ $0.nameID == tag }).first {
+                if let existingImageView = imageViews.first(where: { $0.nameID == tag }) {
                     let convertedFrame = imageView.convert(imageView.bounds, to: UIScreen.main.coordinateSpace)
                     existingImageView.finalFrame = convertedFrame
                     existingImageView.finalCornerRadius = imageView.layer.cornerRadius
                 }
             } else {
-                if let existingView = views.filter({ $0.nameID == tag }).first {
+                if let existingView = views.first(where: { $0.nameID == tag }) {
                     let convertedFrame = transitioningObject.convert(transitioningObject.bounds, to: UIScreen.main.coordinateSpace)
                     existingView.finalFrame = convertedFrame
                     existingView.finalBackgroundColor = transitioningObject.backgroundColor
@@ -92,11 +92,11 @@ class MatchTransitionObjectCreator {
     private func findObjectForTags() {
         tags.forEach { tag in
             switch cellType {
-            case .tableCell:
+            case .tableCell?:
                 if let object = tableCell!.viewWithTag(tag) {
                     createTransitioningObject(object, isInTableCell: true)
                 }
-            case .collectionCell:
+            case .collectionCell?:
                 if let object = baseCellAndCollection!.0.0.viewWithTag(tag) {
                     createTransitioningObject(object, isInTableCell: false, collectionView: baseCellAndCollection!.1)
                 }
