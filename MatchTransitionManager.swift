@@ -19,19 +19,22 @@ public struct Match {
     }
 }
 
-public class MatchTransitionManager: NSObject, UIViewControllerTransitioningDelegate, MatchTransitionDelegate {
-
-    private let transition = MatchTransition()
-    private let objectManager = MatchTransitionObjectManager()
+public class MatchTransitionManager: NSObject {
     
-    private var matches: [Match] = []
-    
+    //MARK: - Singleton
     public static var shared = MatchTransitionManager()
     override private init() {
         super.init()
         transition.delegate = self
     }
+
+    //MARK: - Variables
+    private let transition = MatchTransition()
+    private let objectManager = MatchTransitionObjectManager()
     
+    private var matches: [Match] = []
+    
+    //MARK: - Initial setup
     public func setup(cell: UITableViewCell, to controller: UIViewController, with matches: [Match]) {
         self.matches = matches
         setupMatches(between: cell, and: controller, matches: matches)
@@ -41,6 +44,7 @@ public class MatchTransitionManager: NSObject, UIViewControllerTransitioningDele
         setupMatches(between: cell, at: indexPath, inside: collection, and: controller, matches: matches)
     }
     
+    //MARK: - Private funcs
     private func setupMatches(between cell: UITableViewCell, and controller: UIViewController, matches: [Match]) {
         if controller.parent is UINavigationController {
             controller.parent!.transitioningDelegate = self
@@ -70,13 +74,19 @@ public class MatchTransitionManager: NSObject, UIViewControllerTransitioningDele
         })
         objectManager.transitioningCollectionCell(cell, at: indexPath, in: collection)
     }
-    
+}
+
+//MARK: - MatchTransitionDelegate
+extension MatchTransitionManager: MatchTransitionDelegate {
     func setFinalState(forObjectsInView view: UIView) {
         objectManager.setupFinalState(for: view) {
             self.transition.setTransitioningObjects(views: self.objectManager.views, imageViews: self.objectManager.imageViews, labels: self.objectManager.labels, buttons: self.objectManager.buttons)
         }
     }
-    
+}
+
+//MARK: - UIViewControllerTransitioningDelegate
+extension MatchTransitionManager: UIViewControllerTransitioningDelegate {
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.isPresenting = true
         return transition

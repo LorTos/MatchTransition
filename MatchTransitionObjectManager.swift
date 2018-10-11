@@ -22,7 +22,7 @@ class MatchTransitionObjectManager {
     private(set) var buttons: [TransitioningButton] = []
     
     
-    // Set cell tags and toVC tags first
+    //MARK: - Set tags
     func setTag(_ tag: String, for view: UIView) {
         let hash = tag.hashValue
         
@@ -32,7 +32,7 @@ class MatchTransitionObjectManager {
         view.tag = hash
     }
     
-    // Then pass the cell to the manager
+    //MARK: - Creates transitioning objects
     func transitioningTableCell(_ cell: UITableViewCell) {
         cellType = .tableCell(cell)
         findObjectForTags()
@@ -41,7 +41,6 @@ class MatchTransitionObjectManager {
         cellType = .collectionCell(cell, indexPath, collectionView)
         findObjectForTags()
     }
-    
     private func findObjectForTags() {
         tags.forEach { tag in
             switch cellType {
@@ -57,7 +56,6 @@ class MatchTransitionObjectManager {
             }
         }
     }
-    
     private func createTransitioningObject(_ object: UIView, ignoresSafeArea: Bool = false) {
         switch cellType {
         case .tableCell(let cell)?:
@@ -104,6 +102,7 @@ class MatchTransitionObjectManager {
         }
     }
     
+    //MARK: - Set final state
     func setupFinalState(for view: UIView, completion: (() -> ())?) {
         view.layoutIfNeeded()
         tags.forEach { tag in
@@ -143,6 +142,7 @@ class MatchTransitionObjectManager {
         completion!()
     }
     
+    //MARK: - Reset
     func resetData() {
         tags = []
         views = []

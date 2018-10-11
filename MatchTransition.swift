@@ -21,6 +21,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
     // Vibrancy View
     private var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     
+    // MARK: - Transitioning Objects
     // Objects to move around to create transition
     private var transitioningImages: [TransitioningImageView] = []
     private var transitioningViews: [TransitioningView] = []
@@ -34,6 +35,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         transitioningButtons = buttons
     }
     
+    //MARK: - Transitions
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return transitionDuration
     }
