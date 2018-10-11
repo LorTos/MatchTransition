@@ -253,6 +253,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = H869PTQ6DC;
 						LastSwiftMigration = 1000;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -545,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F37412E5EACE428CC3D8F132 /* Pods-MatchTransition_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = H869PTQ6DC;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -554,6 +556,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MatchTransition_Example.app/MatchTransition_Example";
 			};
 			name = Debug;
 		};
@@ -561,11 +564,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 54A52D2BC86B94F45FD3FDB9 /* Pods-MatchTransition_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = H869PTQ6DC;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MatchTransition_Example.app/MatchTransition_Example";
 			};
 			name = Release;
 		};

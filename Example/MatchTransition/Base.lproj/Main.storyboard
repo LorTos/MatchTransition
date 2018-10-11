@@ -87,7 +87,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uua-J4-xql">
-                                <rect key="frame" x="16" y="603" width="343" height="48"/>
+                                <rect key="frame" x="14" y="603" width="347" height="48"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="2gY-rN-Vyf"/>
@@ -98,10 +98,10 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqB-wQ-B3g">
-                                <rect key="frame" x="16" y="297.5" width="335" height="223.5"/>
+                                <rect key="frame" x="16" y="289.5" width="335" height="174.5"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur blandit elit, a lobortis mi sagittis eu. Nam in maximus sapien. Phasellus venenatis urna vel sapien ornare mattis. Fusce ullamcorper aliquam ligula, id imperdiet massa rutrum vel. Sed nisi ipsum, ornare sit amet elementum. Phasellus venenatis urna vel sapien ornare mattis.</string>
+                                        <string key="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur blandit elit, a lobortis mi sagittis eu. Nam in maximus sapien. Phasellus venenatis urna vel sapien ornare mattis. Fusce ullamcorper aliquam ligula, id imperdiet massa rutrum vel.</string>
                                         <attributes>
                                             <font key="NSFont" size="16" name="SFProText-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5600000000000001" tighteningFactorForTruncation="0.0"/>
@@ -207,11 +207,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HJI-MD-9GY" firstAttribute="trailing" secondItem="4ds-Tm-jFe" secondAttribute="trailing" constant="16" id="06k-y0-tfQ"/>
-                            <constraint firstItem="uua-J4-xql" firstAttribute="leading" secondItem="HJI-MD-9GY" secondAttribute="leading" constant="16" id="2t3-23-bdt"/>
+                            <constraint firstItem="uua-J4-xql" firstAttribute="leading" secondItem="HJI-MD-9GY" secondAttribute="leading" constant="14" id="2t3-23-bdt"/>
                             <constraint firstItem="4ds-Tm-jFe" firstAttribute="top" secondItem="HJI-MD-9GY" secondAttribute="top" constant="16" id="JqI-K4-EkB"/>
                             <constraint firstItem="qFE-bn-5xz" firstAttribute="leading" secondItem="HJI-MD-9GY" secondAttribute="leading" constant="16" id="MEm-Hd-rIk"/>
                             <constraint firstItem="vqB-wQ-B3g" firstAttribute="leading" secondItem="HJI-MD-9GY" secondAttribute="leading" constant="16" id="Pct-w5-hdZ"/>
-                            <constraint firstItem="vqB-wQ-B3g" firstAttribute="top" secondItem="yIM-Jg-rs0" secondAttribute="bottom" constant="16" id="QJf-0U-yt0"/>
+                            <constraint firstItem="vqB-wQ-B3g" firstAttribute="top" secondItem="yIM-Jg-rs0" secondAttribute="bottom" constant="8" id="QJf-0U-yt0"/>
                             <constraint firstItem="qFE-bn-5xz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vqB-wQ-B3g" secondAttribute="bottom" constant="16" id="RFI-ih-1aE"/>
                             <constraint firstItem="HJI-MD-9GY" firstAttribute="trailing" secondItem="wJy-I1-Xns" secondAttribute="trailing" constant="16" id="RPF-Mx-JbN"/>
                             <constraint firstItem="wJy-I1-Xns" firstAttribute="leading" secondItem="HJI-MD-9GY" secondAttribute="leading" constant="16" id="YCc-dj-Vy0"/>
@@ -222,7 +222,7 @@
                             <constraint firstItem="4ds-Tm-jFe" firstAttribute="leading" secondItem="5Wh-U6-IjK" secondAttribute="trailing" constant="16" id="cJJ-w9-4PU"/>
                             <constraint firstItem="yIM-Jg-rs0" firstAttribute="top" secondItem="Lrl-31-SKk" secondAttribute="top" id="hN9-0P-aFS"/>
                             <constraint firstItem="yIM-Jg-rs0" firstAttribute="bottom" secondItem="wJy-I1-Xns" secondAttribute="bottom" constant="16" id="lMl-qx-p3v"/>
-                            <constraint firstItem="HJI-MD-9GY" firstAttribute="trailing" secondItem="uua-J4-xql" secondAttribute="trailing" constant="16" id="pX5-vQ-2ur"/>
+                            <constraint firstItem="HJI-MD-9GY" firstAttribute="trailing" secondItem="uua-J4-xql" secondAttribute="trailing" constant="14" id="pX5-vQ-2ur"/>
                             <constraint firstItem="HJI-MD-9GY" firstAttribute="bottom" secondItem="uua-J4-xql" secondAttribute="bottom" constant="16" id="phY-5U-xXe"/>
                             <constraint firstItem="5Wh-U6-IjK" firstAttribute="leading" secondItem="HJI-MD-9GY" secondAttribute="leading" constant="16" id="q3s-zn-ys5"/>
                             <constraint firstItem="uua-J4-xql" firstAttribute="top" secondItem="qFE-bn-5xz" secondAttribute="bottom" constant="16" id="qXe-ml-OFF"/>
