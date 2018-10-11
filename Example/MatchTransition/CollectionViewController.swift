@@ -50,7 +50,7 @@ class CollectionViewController: UICollectionViewController {
         
         detailsViewController.selectedCard = selectedLocation
         
-        MatchTransitionConfigurator.create(from: selectedCell, at: indexPath, inside: collectionView, to: detailsViewController, matching: [
+        MatchTransitionManager.shared.setup(cell: selectedCell, at: indexPath, inside: collectionView, to: detailsViewController, with: [
             Match(tag: "container", from: selectedCell.contentView, to: detailsViewController.view),
             Match(tag: "imageView", from: selectedCell.backgroundImageView, to: detailsViewController.backgroundImageView),
             Match(tag: "title", from: selectedCell.mainTitleLabel, to: detailsViewController.locationTitleLabel),
@@ -63,8 +63,8 @@ class CollectionViewController: UICollectionViewController {
             Match(tag: "dateView2", from: selectedCell.dateView2, to: detailsViewController.dateView2),
             Match(tag: "dateLabel2", from: selectedCell.dateLabel2, to: detailsViewController.dateLabel2),
             Match(tag: "dateView3", from: selectedCell.dateView3, to: detailsViewController.dateView3),
-            Match(tag: "dateLabel3", from: selectedCell.dateLabel3, to: detailsViewController.dateLabel3),
-        ])
+            Match(tag: "dateLabel3", from: selectedCell.dateLabel3, to: detailsViewController.dateLabel3)
+            ])
         
         present(detailsViewController, animated: true, completion: nil)
     }

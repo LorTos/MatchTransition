@@ -1,18 +1,18 @@
 //
-//  MatchTransitionObjectCreator.swift
+//  MatchTransitionObjectManager.swift
 //  MatchTransition
 //
-//  Created by Lorenzo Toscani De Col on 5/23/18.
+//  Created by Lorenzo Toscani De Col on 11/10/2018.
 //
 
-class MatchTransitionObjectCreator {
+import UIKit
+
+class MatchTransitionObjectManager {
     enum CellType {
         case tableCell(UITableViewCell)
         case collectionCell(UICollectionViewCell, IndexPath, UICollectionView)
     }
     private var cellType: CellType!
-    private(set) var tableCell: UITableViewCell?
-    private(set) var baseCellAndCollection: ((UICollectionViewCell, IndexPath), UICollectionView)?
     
     private(set) var tags: [Int] = []
     
@@ -20,6 +20,7 @@ class MatchTransitionObjectCreator {
     private(set) var imageViews: [TransitioningImageView] = []
     private(set) var labels: [TransitioningLabel] = []
     private(set) var buttons: [TransitioningButton] = []
+    
     
     // Set cell tags and toVC tags first
     func setTag(_ tag: String, for view: UIView) {
@@ -39,52 +40,6 @@ class MatchTransitionObjectCreator {
     func transitioningCollectionCell(_ cell: UICollectionViewCell, at indexPath: IndexPath, in collectionView: UICollectionView) {
         cellType = .collectionCell(cell, indexPath, collectionView)
         findObjectForTags()
-    }
-    
-    // Then pass toVC to the manager
-    func arrivalViewController(_ viewController: UIViewController) {
-        viewController.view.layoutIfNeeded()
-        tags.forEach { tag in
-            guard let transitioningObject = viewController.view.viewWithTag(tag) else { return }
-            if let button = transitioningObject as? UIButton {
-                if let existingButton = buttons.first(where: { $0.nameID == tag }) {
-                    let convertedFrame = button.convert(button.bounds, to: UIScreen.main.coordinateSpace)
-                    existingButton.finalFrame = convertedFrame
-                    existingButton.finalTextFont = button.titleLabel?.font
-                    existingButton.finalBackgroundColor = button.backgroundColor
-                    existingButton.finalTextColor = button.titleColor(for: .normal)
-                    existingButton.finalCornerRadius = button.layer.cornerRadius
-                }
-            } else if let label = transitioningObject as? UILabel {
-                if let existingLabel = labels.first(where: { $0.nameID == tag }) {
-                    let convertedFrame = label.convert(label.bounds, to: UIScreen.main.coordinateSpace)
-                    existingLabel.finalFrame = convertedFrame
-                    existingLabel.finalFont = label.font
-                    existingLabel.finalTextColor = label.textColor
-                }
-            } else if let imageView = transitioningObject as? UIImageView {
-                if let existingImageView = imageViews.first(where: { $0.nameID == tag }) {
-                    let convertedFrame = imageView.convert(imageView.bounds, to: UIScreen.main.coordinateSpace)
-                    existingImageView.finalFrame = convertedFrame
-                    existingImageView.finalCornerRadius = imageView.layer.cornerRadius
-                }
-            } else {
-                if let existingView = views.first(where: { $0.nameID == tag }) {
-                    let convertedFrame = transitioningObject.convert(transitioningObject.bounds, to: UIScreen.main.coordinateSpace)
-                    existingView.finalFrame = convertedFrame
-                    existingView.finalBackgroundColor = transitioningObject.backgroundColor
-                    existingView.finalCornerRadius = transitioningObject.layer.cornerRadius
-                }
-            }
-        }
-    }
-    
-    func resetData() {
-        tags = []
-        views = []
-        imageViews = []
-        labels = []
-        buttons = []
     }
     
     private func findObjectForTags() {
@@ -116,8 +71,8 @@ class MatchTransitionObjectCreator {
                 let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: imageView.convert(imageView.bounds, to: cell.contentView))
                 imageViews.append(transitioningObject)
             } else {
-                let isBaseContainer = object === tableCell!.contentView
-                let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: isBaseContainer ? object.convert(object.bounds, to: UIScreen.main.coordinateSpace) : object.convert(object.bounds, to: tableCell), isBaseContainer: isBaseContainer)
+                let isBaseContainer = object === cell.contentView
+                let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: isBaseContainer ? object.convert(object.bounds, to: UIScreen.main.coordinateSpace) : object.convert(object.bounds, to: cell), isBaseContainer: isBaseContainer)
                 views.append(transitioningObject)
             }
         case .collectionCell(let cell, let indexPath, let collection)?:
@@ -147,5 +102,52 @@ class MatchTransitionObjectCreator {
             }
         default: break
         }
+    }
+    
+    func setupFinalState(for view: UIView, completion: (() -> ())?) {
+        view.layoutIfNeeded()
+        tags.forEach { tag in
+            guard let transitioningObject = view.viewWithTag(tag) else { return }
+            if let button = transitioningObject as? UIButton {
+                if let existingButton = buttons.first(where: { $0.nameID == tag }) {
+                    let convertedFrame = button.convert(button.bounds, to: UIScreen.main.coordinateSpace)
+                    existingButton.finalFrame = convertedFrame
+                    existingButton.finalTextFont = button.titleLabel?.font
+                    existingButton.finalBackgroundColor = button.backgroundColor
+                    existingButton.finalTextColor = button.titleColor(for: .normal)
+                    existingButton.finalCornerRadius = button.layer.cornerRadius
+                }
+            } else if let label = transitioningObject as? UILabel {
+                if let existingLabel = labels.first(where: { $0.nameID == tag }) {
+                    let convertedFrame = label.convert(label.bounds, to: UIScreen.main.coordinateSpace)
+                    existingLabel.finalFrame = convertedFrame
+                    existingLabel.finalFont = label.font
+                    existingLabel.finalTextColor = label.textColor
+                }
+            } else if let imageView = transitioningObject as? UIImageView {
+                if let existingImageView = imageViews.first(where: { $0.nameID == tag }) {
+                    let convertedFrame = imageView.convert(imageView.bounds, to: UIScreen.main.coordinateSpace)
+                    existingImageView.finalFrame = convertedFrame
+                    existingImageView.finalCornerRadius = imageView.layer.cornerRadius
+                }
+            } else {
+                if let existingView = views.first(where: { $0.nameID == tag }) {
+                    let convertedFrame = transitioningObject.convert(transitioningObject.bounds, to: UIScreen.main.coordinateSpace)
+                    existingView.finalFrame = convertedFrame
+                    existingView.finalBackgroundColor = transitioningObject.backgroundColor
+                    existingView.finalCornerRadius = transitioningObject.layer.cornerRadius
+                }
+            }
+        }
+        
+        completion!()
+    }
+    
+    func resetData() {
+        tags = []
+        views = []
+        imageViews = []
+        labels = []
+        buttons = []
     }
 }

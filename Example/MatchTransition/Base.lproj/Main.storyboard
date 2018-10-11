@@ -98,12 +98,12 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqB-wQ-B3g">
-                                <rect key="frame" x="16" y="297.5" width="335" height="178.5"/>
+                                <rect key="frame" x="16" y="297.5" width="335" height="195.5"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur blandit elit, a lobortis mi sagittis eu. Nam in maximus sapien. Phasellus venenatis urna vel sapien ornare mattis. Fusce ullamcorper aliquam ligula, id imperdiet massa rutrum vel. Sed nisi ipsum, ornare sit amet elementum. Phasellus venenatis urna vel sapien ornare mattis.</string>
                                         <attributes>
-                                            <font key="NSFont" size="14" name="SFProText-Light"/>
+                                            <font key="NSFont" size="16" name="SFProText-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5600000000000001" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>

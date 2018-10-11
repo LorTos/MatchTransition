@@ -2,15 +2,21 @@
 //  MatchTransition.swift
 //  MatchTransition
 //
-//  Created by Lorenzo Toscani De Col on 5/23/18.
+//  Created by Lorenzo Toscani De Col on 11/10/2018.
 //
 
 import UIKit
+
+protocol MatchTransitionDelegate: class {
+    func setFinalState(forObjectsInView view: UIView)
+}
 
 class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     private var transitionDuration: Double = 0.5
     var isPresenting = true
+    
+    weak var delegate: MatchTransitionDelegate!
     
     // Vibrancy View
     private var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -41,28 +47,34 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         let initialView = isPresenting ? fromView : transitionContext.view(forKey: .to)!
         let detailsView = isPresenting ? toView : transitionContext.view(forKey: .from)!
         
-        blurView.frame = containerView.bounds
-        
-        // Set objects
         if isPresenting {
-            setupPresentingAnimation(transitionContext, fromView)
             detailsView.alpha = 0
             containerView.addSubview(detailsView)
+            
+            // Set final states for detailsView views
+            delegate.setFinalState(forObjectsInView: detailsView)
+            
+            // Setup presentation for isPresenting
+            setupPresentingAnimation(containerView)
+            
+            // Start presentingAnimation
             presentingAnimation(transitionContext, detailsView, fromView: fromView, toView: toView, containerView: containerView)
         } else {
-            setupDismissalAnimation(transitionContext)
+            // Setup presentation for dismissal
+            setupDismissalAnimation(containerView)
             detailsView.removeFromSuperview()
             containerView.addSubview(initialView)
             containerView.sendSubviewToBack(initialView)
             initialView.alpha = 1
+            // Start dismissalAnimation
             dismissalAnimation(transitionContext)
         }
     }
     
     // MARK: - Presenting Animation
-    private func setupPresentingAnimation(_ transitionContext: UIViewControllerContextTransitioning, _ fromView: UIView) {
+    private func setupPresentingAnimation(_ containerView: UIView) {
         blurView.effect = nil
-        transitionContext.containerView.addSubview(blurView)
+        containerView.addSubview(blurView)
         if let container = transitioningViews.first(where: { $0.isBaseContainer }) {
             container.frame = container.initialFrame
             container.backgroundColor = container.initialBackgroundColor
@@ -106,18 +118,19 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 container.addSubview(button)
             }
             
-            transitionContext.containerView.addSubview(container)
+            containerView.addSubview(container)
         }
     }
     private func presentingAnimation(_ transitionContext: UIViewControllerContextTransitioning, _ detailsView: UIView, fromView: UIView, toView: UIView, containerView: UIView) {
         UIView.animate(withDuration: 0.1) {
             self.blurView.effect = UIBlurEffect(style: .light)
         }
-        UIView.animate(withDuration: 0.25, delay: transitionDuration - 0.15, options: .curveEaseInOut, animations: {
+        
+        containerView.bringSubviewToFront(toView)
+        UIView.animate(withDuration: 0.2, delay: transitionDuration, options: .curveEaseInOut, animations: {
             detailsView.alpha = 1
-        }) { _ in
-            containerView.bringSubviewToFront(toView)
-        }
+        }, completion: nil)
+        
         UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.transitioningViews.forEach({ view in
                 view.frame = view.finalFrame
@@ -143,11 +156,10 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             transitionContext.containerView.subviews.forEach({ $0.removeFromSuperview() })
         }
-        
     }
     
     // MARK: - Dismissal Animation
-    private func setupDismissalAnimation(_ transitionContext: UIViewControllerContextTransitioning) {
+    private func setupDismissalAnimation(_ containerView: UIView) {
         blurView.effect = UIBlurEffect(style: .light)
         if let container = transitioningViews.first(where: { $0.isBaseContainer }) {
             container.frame = container.finalFrame
@@ -191,14 +203,14 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 container.addSubview(button)
             }
             
-            transitionContext.containerView.addSubview(container)
+            containerView.addSubview(container)
         }
     }
     private func dismissalAnimation(_ transitionContext: UIViewControllerContextTransitioning) {
         UIView.animate(withDuration: transitionDuration) {
             self.blurView.effect = nil
         }
-        UIView.animate(withDuration: 0.25, delay: transitionDuration - 0.15, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: transitionDuration, options: .curveEaseInOut, animations: {
             self.transitioningViews.forEach({ $0.alpha = 0 })
             self.transitioningImages.forEach({ $0.alpha = 0 })
             self.transitioningLabels.forEach({ $0.alpha = 0 })
@@ -248,4 +260,3 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         view.layer.add(roundCorners, forKey: nil)
     }
 }
-
