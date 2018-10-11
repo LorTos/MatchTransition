@@ -37,7 +37,7 @@ class DetailsViewController: UIViewController {
         [paragraphLabel, nextDateLabel, monthLabel, dateLabel1, dateLabel2, dateLabel3].forEach({ $0?.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1) })
         
         [dateView1, dateView2, dateView3, bottomButton].forEach { view in
-            view?.layer.cornerRadius = 6
+            view?.layer.cornerRadius = 2
             view?.layer.masksToBounds = true
         }
         

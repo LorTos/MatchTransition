@@ -48,11 +48,11 @@ class CardCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         [dateView1, dateView2, dateView3].forEach { view in
-            view?.layer.cornerRadius = 6
+            view?.layer.cornerRadius = 2
             view?.layer.masksToBounds = true
         }
         
-        contentView.layer.cornerRadius = 6
+        contentView.layer.cornerRadius = 2
         contentView.layer.masksToBounds = true
         
         layer.shadowColor = UIColor.black.cgColor
