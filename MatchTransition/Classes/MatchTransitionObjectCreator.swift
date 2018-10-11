@@ -7,8 +7,8 @@
 
 class MatchTransitionObjectCreator {
     enum CellType {
-        case tableCell
-        case collectionCell
+        case tableCell(UITableViewCell)
+        case collectionCell(UICollectionViewCell, IndexPath, UICollectionView)
     }
     private var cellType: CellType!
     private(set) var tableCell: UITableViewCell?
@@ -33,13 +33,11 @@ class MatchTransitionObjectCreator {
     
     // Then pass the cell to the manager
     func transitioningTableCell(_ cell: UITableViewCell) {
-        cellType = .tableCell
-        tableCell = cell
+        cellType = .tableCell(cell)
         findObjectForTags()
     }
     func transitioningCollectionCell(_ cell: UICollectionViewCell, at indexPath: IndexPath, in collectionView: UICollectionView) {
-        cellType = .collectionCell
-        baseCellAndCollection = ((cell, indexPath), collectionView)
+        cellType = .collectionCell(cell, indexPath, collectionView)
         findObjectForTags()
     }
     
@@ -92,60 +90,62 @@ class MatchTransitionObjectCreator {
     private func findObjectForTags() {
         tags.forEach { tag in
             switch cellType {
-            case .tableCell?:
-                if let object = tableCell!.viewWithTag(tag) {
-                    createTransitioningObject(object, isInTableCell: true)
+            case .tableCell(let cell)?:
+                if let object = cell.viewWithTag(tag) {
+                    createTransitioningObject(object)
                 }
-            case .collectionCell?:
-                if let object = baseCellAndCollection!.0.0.viewWithTag(tag) {
-                    createTransitioningObject(object, isInTableCell: false, collectionView: baseCellAndCollection!.1)
+            case .collectionCell(let cell, _, _)?:
+                if let object = cell.viewWithTag(tag) {
+                    createTransitioningObject(object)
                 }
             default: break
             }
         }
     }
     
-    private func createTransitioningObject(_ object: UIView, isInTableCell: Bool, collectionView: UICollectionView? = nil) {
-        if isInTableCell {
+    private func createTransitioningObject(_ object: UIView, ignoresSafeArea: Bool = false) {
+        switch cellType {
+        case .tableCell(let cell)?:
             if let button = object as? UIButton {
-                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: button.convert(button.bounds, to: tableCell!.contentView))
+                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: button.convert(button.bounds, to: cell.contentView))
                 buttons.append(transitioningObject)
             } else if let label = object as? UILabel {
-                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: label.convert(label.bounds, to: tableCell!.contentView))
+                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: label.convert(label.bounds, to: cell.contentView))
                 labels.append(transitioningObject)
             } else if let imageView = object as? UIImageView {
-                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: imageView.convert(imageView.bounds, to: tableCell!.contentView))
+                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: imageView.convert(imageView.bounds, to: cell.contentView))
                 imageViews.append(transitioningObject)
             } else {
                 let isBaseContainer = object === tableCell!.contentView
                 let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: isBaseContainer ? object.convert(object.bounds, to: UIScreen.main.coordinateSpace) : object.convert(object.bounds, to: tableCell), isBaseContainer: isBaseContainer)
                 views.append(transitioningObject)
             }
-        } else {
+        case .collectionCell(let cell, let indexPath, let collection)?:
             if let button = object as? UIButton {
-                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: button.convert(button.bounds, to: baseCellAndCollection!.0.0.contentView))
+                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: button.convert(button.bounds, to: cell.contentView))
                 buttons.append(transitioningObject)
             } else if let label = object as? UILabel {
-                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: label.convert(label.bounds, to: baseCellAndCollection!.0.0.contentView))
+                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: label.convert(label.bounds, to: cell.contentView))
                 labels.append(transitioningObject)
             } else if let imageView = object as? UIImageView {
-                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: imageView.convert(imageView.bounds, to: baseCellAndCollection!.0.0.contentView))
+                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: imageView.convert(imageView.bounds, to: cell.contentView))
                 imageViews.append(transitioningObject)
             } else {
-                let isBaseContainer = object === (isInTableCell ? tableCell!.contentView : baseCellAndCollection!.0.0.contentView)
+                let isBaseContainer = object === cell.contentView
                 if isBaseContainer {
-                    let collection = baseCellAndCollection!.1
-                    let layoutAttributes = collection.layoutAttributesForItem(at: baseCellAndCollection!.0.1)
+                    let collection = collection
+                    let layoutAttributes = collection.layoutAttributesForItem(at: indexPath)
                     let cellFrame = layoutAttributes!.frame
                     
                     let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: collection.convert(cellFrame, to: UIScreen.main.coordinateSpace), isBaseContainer: true)
                     views.append(transitioningObject)
                 } else {
-                    let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame:  object.convert(object.bounds, to: baseCellAndCollection!.0.0), isBaseContainer: isBaseContainer)
+                    let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame:  object.convert(object.bounds, to: cell.contentView), isBaseContainer: isBaseContainer)
                     views.append(transitioningObject)
                 }
                 
             }
+        default: break
         }
     }
 }
