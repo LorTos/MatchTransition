@@ -39,9 +39,9 @@ public class MatchTransitionManager: NSObject {
         self.matches = matches
         setupMatches(between: cell, and: controller, matches: matches)
     }
-    public func setup(cell: UICollectionViewCell, at indexPath: IndexPath, inside collection: UICollectionView, to controller: UIViewController, with matches: [Match]) {
+    public func setup(cell: UICollectionViewCell, to controller: UIViewController, with matches: [Match]) {
         self.matches = matches
-        setupMatches(between: cell, at: indexPath, inside: collection, and: controller, matches: matches)
+        setupMatches(between: cell, and: controller, matches: matches)
     }
     
     //MARK: - Private funcs
@@ -60,7 +60,7 @@ public class MatchTransitionManager: NSObject {
         objectManager.transitioningTableCell(cell)
     }
     
-    private func setupMatches(between cell: UICollectionViewCell, at indexPath: IndexPath, inside collection: UICollectionView, and controller: UIViewController, matches: [Match]) {
+    private func setupMatches(between cell: UICollectionViewCell, and controller: UIViewController, matches: [Match]) {
         if controller.parent is UINavigationController {
             controller.parent!.transitioningDelegate = self
         } else {
@@ -72,7 +72,7 @@ public class MatchTransitionManager: NSObject {
             objectManager.setTag($0.tag, for: $0.from)
             objectManager.setTag($0.tag, for: $0.to)
         })
-        objectManager.transitioningCollectionCell(cell, at: indexPath, in: collection)
+        objectManager.transitioningCollectionCell(cell)
     }
 }
 

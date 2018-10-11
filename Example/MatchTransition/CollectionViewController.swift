@@ -50,7 +50,7 @@ class CollectionViewController: UICollectionViewController {
         
         detailsViewController.selectedCard = selectedLocation
         
-        MatchTransitionManager.shared.setup(cell: selectedCell, at: indexPath, inside: collectionView, to: detailsViewController, with: [
+        MatchTransitionManager.shared.setup(cell: selectedCell, to: detailsViewController, with: [
             Match(tag: "container", from: selectedCell.contentView, to: detailsViewController.view),
             Match(tag: "imageView", from: selectedCell.backgroundImageView, to: detailsViewController.backgroundImageView),
             Match(tag: "title", from: selectedCell.mainTitleLabel, to: detailsViewController.locationTitleLabel),
