@@ -87,10 +87,10 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uua-J4-xql">
-                                <rect key="frame" x="16" y="591" width="343" height="60"/>
+                                <rect key="frame" x="16" y="603" width="343" height="48"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="2gY-rN-Vyf"/>
+                                    <constraint firstAttribute="height" constant="48" id="2gY-rN-Vyf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="PICK ANOTHER DATE">
@@ -98,7 +98,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqB-wQ-B3g">
-                                <rect key="frame" x="16" y="297.5" width="335" height="195.5"/>
+                                <rect key="frame" x="16" y="297.5" width="335" height="223.5"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur blandit elit, a lobortis mi sagittis eu. Nam in maximus sapien. Phasellus venenatis urna vel sapien ornare mattis. Fusce ullamcorper aliquam ligula, id imperdiet massa rutrum vel. Sed nisi ipsum, ornare sit amet elementum. Phasellus venenatis urna vel sapien ornare mattis.</string>
@@ -111,7 +111,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFE-bn-5xz">
-                                <rect key="frame" x="16" y="509" width="343" height="50"/>
+                                <rect key="frame" x="16" y="537" width="343" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5g6-H5-f7Y">
                                         <rect key="frame" x="0.0" y="0.0" width="161" height="50"/>
@@ -225,7 +225,7 @@
                             <constraint firstItem="HJI-MD-9GY" firstAttribute="trailing" secondItem="uua-J4-xql" secondAttribute="trailing" constant="16" id="pX5-vQ-2ur"/>
                             <constraint firstItem="HJI-MD-9GY" firstAttribute="bottom" secondItem="uua-J4-xql" secondAttribute="bottom" constant="16" id="phY-5U-xXe"/>
                             <constraint firstItem="5Wh-U6-IjK" firstAttribute="leading" secondItem="HJI-MD-9GY" secondAttribute="leading" constant="16" id="q3s-zn-ys5"/>
-                            <constraint firstItem="uua-J4-xql" firstAttribute="top" secondItem="qFE-bn-5xz" secondAttribute="bottom" constant="32" id="qXe-ml-OFF"/>
+                            <constraint firstItem="uua-J4-xql" firstAttribute="top" secondItem="qFE-bn-5xz" secondAttribute="bottom" constant="16" id="qXe-ml-OFF"/>
                             <constraint firstItem="HJI-MD-9GY" firstAttribute="trailing" secondItem="yIM-Jg-rs0" secondAttribute="trailing" id="qcE-Fh-S8c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HJI-MD-9GY"/>
