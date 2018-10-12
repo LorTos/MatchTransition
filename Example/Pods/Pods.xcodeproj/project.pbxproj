@@ -21,9 +21,9 @@
 		C880CE8D2B17442E339F28EB2E706F30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
 		D229EC9A634E7D5C0E78CF16A3B114B7 /* TransitioningImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFC38D5F8028F6BCD40A714FB19E6F4 /* TransitioningImageView.swift */; };
 		F0242D0E0D12C7431723BA9B43DC752B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		FEFB9EAF216F90AC00242B8A /* MatchTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB9EAE216F90AC00242B8A /* MatchTransitionManager.swift */; };
-		FEFB9EB1216F90EF00242B8A /* MatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB9EB0216F90EF00242B8A /* MatchTransition.swift */; };
-		FEFB9EB3216F913900242B8A /* MatchTransitionObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB9EB2216F913900242B8A /* MatchTransitionObjectManager.swift */; };
+		FEE5BE592170F63C001F2C38 /* MatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5BE562170F63C001F2C38 /* MatchTransition.swift */; };
+		FEE5BE5A2170F63C001F2C38 /* MatchTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5BE572170F63C001F2C38 /* MatchTransitionManager.swift */; };
+		FEE5BE5B2170F63C001F2C38 /* MatchTransitionObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5BE582170F63C001F2C38 /* MatchTransitionObjectManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,9 +83,9 @@
 		E49528A6622D6F73BE40B4383F5EBBAA /* Pods-MatchTransition_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MatchTransition_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E4A4749DA24111C706F767DF0A80C559 /* Pods_MatchTransition_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchTransition_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEF9E431E1F039F5F6BC98FE4060DC2 /* Pods-MatchTransition_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MatchTransition_Tests-resources.sh"; sourceTree = "<group>"; };
-		FEFB9EAE216F90AC00242B8A /* MatchTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTransitionManager.swift; sourceTree = "<group>"; };
-		FEFB9EB0216F90EF00242B8A /* MatchTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTransition.swift; sourceTree = "<group>"; };
-		FEFB9EB2216F913900242B8A /* MatchTransitionObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTransitionObjectManager.swift; sourceTree = "<group>"; };
+		FEE5BE562170F63C001F2C38 /* MatchTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTransition.swift; path = MatchTransition/Classes/MatchTransition.swift; sourceTree = "<group>"; };
+		FEE5BE572170F63C001F2C38 /* MatchTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTransitionManager.swift; path = MatchTransition/Classes/MatchTransitionManager.swift; sourceTree = "<group>"; };
+		FEE5BE582170F63C001F2C38 /* MatchTransitionObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTransitionObjectManager.swift; path = MatchTransition/Classes/MatchTransitionObjectManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,9 +179,9 @@
 			children = (
 				112303B510A80214D3296914460E2728 /* Pod */,
 				8EC7E113DC36800514F6A508B9B4E15B /* Support Files */,
-				FEFB9EB0216F90EF00242B8A /* MatchTransition.swift */,
-				FEFB9EAE216F90AC00242B8A /* MatchTransitionManager.swift */,
-				FEFB9EB2216F913900242B8A /* MatchTransitionObjectManager.swift */,
+				FEE5BE562170F63C001F2C38 /* MatchTransition.swift */,
+				FEE5BE572170F63C001F2C38 /* MatchTransitionManager.swift */,
+				FEE5BE582170F63C001F2C38 /* MatchTransitionObjectManager.swift */,
 				202CD44B1E7336890EBBD3FE0C406B9D /* TransitioningObjects */,
 			);
 			name = MatchTransition;
@@ -395,13 +395,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE5BE5A2170F63C001F2C38 /* MatchTransitionManager.swift in Sources */,
 				AF38C887A0B1564042FF1518765B8E91 /* MatchTransition-dummy.m in Sources */,
-				FEFB9EAF216F90AC00242B8A /* MatchTransitionManager.swift in Sources */,
+				FEE5BE592170F63C001F2C38 /* MatchTransition.swift in Sources */,
 				37257880DEF3FC6B17A40FDC51F0F6E4 /* TransitioningButton.swift in Sources */,
 				D229EC9A634E7D5C0E78CF16A3B114B7 /* TransitioningImageView.swift in Sources */,
-				FEFB9EB3216F913900242B8A /* MatchTransitionObjectManager.swift in Sources */,
+				FEE5BE5B2170F63C001F2C38 /* MatchTransitionObjectManager.swift in Sources */,
 				31343E9666AE20B34B87DF4CDE9F342E /* TransitioningLabel.swift in Sources */,
-				FEFB9EB1216F90EF00242B8A /* MatchTransition.swift in Sources */,
 				181786C04FDF909BA5A9733B52F23CE3 /* TransitioningView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
