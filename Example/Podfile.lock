@@ -1,5 +1,5 @@
 PODS:
-  - MatchTransition (0.1.0)
+  - MatchTransition (0.1.1)
 
 DEPENDENCIES:
   - MatchTransition (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MatchTransition: e542f59f34212fa177147b0ed0948d29ee72dda4
+  MatchTransition: 1d8263e6d106c663293333ecb3f15c41d9174241
 
 PODFILE CHECKSUM: a6d45d2cfa5b107b26bf5b5c8dd24c03f4506c90
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3
