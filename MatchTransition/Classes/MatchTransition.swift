@@ -115,7 +115,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
             self.blurView.effect = UIBlurEffect(style: .light)
         }
         
-        containerView.bringSubviewToFront(toView)
+        containerView.bringSubview(toFront: toView)
         UIView.animate(withDuration: 0.2, delay: transitionDuration, options: .curveEaseInOut, animations: {
             detailsView.alpha = 1
         }, completion: nil)
