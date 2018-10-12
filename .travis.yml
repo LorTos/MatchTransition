@@ -13,7 +13,7 @@ branches:
 
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
-- gen instal xcpretty -N
+- gem instal xcpretty -N
 - brew update
 - brew install swiftlint || true
 - pod install --project-directory=Example
