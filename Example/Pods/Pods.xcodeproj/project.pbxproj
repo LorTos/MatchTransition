@@ -177,11 +177,11 @@
 		6D42CF202AFA280E36BB4CA5C0A4D2BF /* MatchTransition */ = {
 			isa = PBXGroup;
 			children = (
+				112303B510A80214D3296914460E2728 /* Pod */,
+				8EC7E113DC36800514F6A508B9B4E15B /* Support Files */,
 				FEFB9EB0216F90EF00242B8A /* MatchTransition.swift */,
 				FEFB9EAE216F90AC00242B8A /* MatchTransitionManager.swift */,
 				FEFB9EB2216F913900242B8A /* MatchTransitionObjectManager.swift */,
-				112303B510A80214D3296914460E2728 /* Pod */,
-				8EC7E113DC36800514F6A508B9B4E15B /* Support Files */,
 				202CD44B1E7336890EBBD3FE0C406B9D /* TransitioningObjects */,
 			);
 			name = MatchTransition;
