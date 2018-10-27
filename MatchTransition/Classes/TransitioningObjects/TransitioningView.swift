@@ -13,11 +13,15 @@ class TransitioningView: UIView {
     private(set) var initialBackgroundColor: UIColor!
     private(set) var initialCornerRadius: CGFloat!
     
-    var finalFrame: CGRect!
-    var finalBackgroundColor: UIColor!
-    var finalCornerRadius: CGFloat!
+    private(set) var finalFrame: CGRect!
+    private(set) var finalBackgroundColor: UIColor!
+    private(set) var finalCornerRadius: CGFloat!
     
     private(set) var isBaseContainer: Bool!
+    
+    var wantsCornerRadiusTransition: Bool {
+        return initialCornerRadius != finalCornerRadius
+    }
     
     init(with view: UIView, id: Int, initialFrame: CGRect, isBaseContainer: Bool = false) {
         super.init(frame: initialFrame)
@@ -31,6 +35,12 @@ class TransitioningView: UIView {
         initialCornerRadius = view.layer.cornerRadius
         layer.cornerRadius = view.layer.cornerRadius
         layer.masksToBounds = view.layer.masksToBounds
+    }
+    
+    func setFinalState(to view: UIView, finalFrame: CGRect) {
+        self.finalFrame = finalFrame
+        finalBackgroundColor = view.backgroundColor
+        finalCornerRadius = view.layer.cornerRadius
     }
     
     required init?(coder aDecoder: NSCoder) {

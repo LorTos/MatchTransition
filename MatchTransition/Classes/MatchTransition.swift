@@ -123,10 +123,12 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.transitioningViews.forEach({ view in
                 view.frame = view.finalFrame
+                view.layer.cornerRadius = view.finalCornerRadius
                 view.backgroundColor = view.finalBackgroundColor
             })
             self.transitioningImages.forEach({ imageView in
                 imageView.frame = imageView.finalFrame
+                imageView.layer.cornerRadius = imageView.finalCornerRadius
             })
             self.transitioningLabels.forEach({ label in
                 label.frame = label.finalFrame
@@ -140,6 +142,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 button.titleLabel?.font = button.finalTextFont
                 button.titleLabel?.textColor = button.finalTextColor
                 button.backgroundColor = button.finalBackgroundColor
+                button.layer.cornerRadius = button.finalCornerRadius
             })
         }) { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
@@ -151,15 +154,16 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
     private func setupDismissalAnimation(_ containerView: UIView) {
         blurView.effect = UIBlurEffect(style: .light)
         if let container = transitioningViews.first(where: { $0.isBaseContainer }) {
-            //TODO: Handle corner radius and roundCorners Function
             container.frame = container.finalFrame
             container.backgroundColor = container.finalBackgroundColor
             
-            transitioningViews.filter({ !$0.isBaseContainer }).forEach { view in
-                view.frame = view.finalFrame
-                view.backgroundColor = view.finalBackgroundColor
-                container.addSubview(view)
-            }
+            transitioningViews.forEach({
+                if !$0.isBaseContainer {
+                    $0.frame = $0.finalFrame
+                    $0.backgroundColor = $0.finalBackgroundColor
+                    container.addSubview($0)
+                }
+            })
             
             transitioningImages.forEach { imageView in
                 imageView.frame = imageView.finalFrame
@@ -199,9 +203,11 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
             self.transitioningViews.forEach({ view in
                 view.frame = view.initialFrame
                 view.backgroundColor = view.initialBackgroundColor
+                view.layer.cornerRadius = view.initialCornerRadius
             })
             self.transitioningImages.forEach({ imageView in
                 imageView.frame = imageView.initialFrame
+                imageView.layer.cornerRadius = imageView.initialCornerRadius
             })
             self.transitioningLabels.forEach({ label in
                 guard let initialFrame = label.initialFrame else {return}
@@ -216,6 +222,7 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 button.titleLabel?.font = button.initialTextFont
                 button.titleLabel?.textColor = button.initialTextColor
                 button.backgroundColor = button.initialBackgroundColor
+                button.layer.cornerRadius = button.initialCornerRadius
             })
         }) { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
@@ -227,16 +234,5 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
             
             transitionContext.containerView.subviews.forEach({ $0.removeFromSuperview() })
         }
-    }
-    
-    // MARK: - RoundCorners
-    // FIXME: Make function work
-    private func roundCorners(of view: UIView, from initialCornerRadius: CGFloat, to finalCornerRadius: CGFloat) {
-        let roundCorners = CABasicAnimation(keyPath: "cornerRadius")
-        roundCorners.fromValue = initialCornerRadius
-        roundCorners.toValue = finalCornerRadius
-        roundCorners.duration = transitionDuration - 0.15
-        
-        view.layer.add(roundCorners, forKey: nil)
     }
 }

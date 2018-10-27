@@ -107,32 +107,23 @@ class MatchTransitionObjectManager {
         
         tags.forEach { tag in
             guard let transitioningObject = view.viewWithTag(tag) else { return }
-            
             let convertedFrame = transitioningObject.convert(transitioningObject.bounds, to: UIScreen.main.coordinateSpace)
+            
             if let button = transitioningObject as? UIButton {
                 if let existingButton = buttons.first(where: { $0.nameID == tag }) {
-                    existingButton.finalFrame = convertedFrame
-                    existingButton.finalTextFont = button.titleLabel?.font
-                    existingButton.finalBackgroundColor = button.backgroundColor
-                    existingButton.finalTextColor = button.titleColor(for: .normal)
-                    existingButton.finalCornerRadius = button.layer.cornerRadius
+                    existingButton.setFinalState(to: button, finalFrame: convertedFrame)
                 }
             } else if let label = transitioningObject as? UILabel {
                 if let existingLabel = labels.first(where: { $0.nameID == tag }) {
-                    existingLabel.finalFrame = convertedFrame
-                    existingLabel.finalFont = label.font
-                    existingLabel.finalTextColor = label.textColor
+                    existingLabel.setFinalState(to: label, finalFrame: convertedFrame)
                 }
             } else if let imageView = transitioningObject as? UIImageView {
                 if let existingImageView = imageViews.first(where: { $0.nameID == tag }) {
-                    existingImageView.finalFrame = convertedFrame
-                    existingImageView.finalCornerRadius = imageView.layer.cornerRadius
+                    existingImageView.setFinalState(to: imageView, finalFrame: convertedFrame)
                 }
             } else {
                 if let existingView = views.first(where: { $0.nameID == tag }) {
-                    existingView.finalFrame = convertedFrame
-                    existingView.finalBackgroundColor = transitioningObject.backgroundColor
-                    existingView.finalCornerRadius = transitioningObject.layer.cornerRadius
+                    existingView.setFinalState(to: transitioningObject, finalFrame: convertedFrame)
                 }
             }
         }

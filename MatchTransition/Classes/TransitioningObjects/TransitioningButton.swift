@@ -15,11 +15,15 @@ class TransitioningButton: UIButton {
     private(set) var initialBackgroundColor: UIColor!
     private(set) var initialCornerRadius: CGFloat!
     
-    var finalFrame: CGRect!
-    var finalTextFont: UIFont!
-    var finalTextColor: UIColor!
-    var finalBackgroundColor: UIColor!
-    var finalCornerRadius: CGFloat!
+    private(set) var finalFrame: CGRect!
+    private(set) var finalTextFont: UIFont!
+    private(set) var finalTextColor: UIColor!
+    private(set) var finalBackgroundColor: UIColor!
+    private(set) var finalCornerRadius: CGFloat!
+    
+    var wantsCornerRadiusTransition: Bool {
+        return initialCornerRadius != finalCornerRadius
+    }
     
     init(with button: UIButton, id: Int, initialFrame: CGRect) {
         super.init(frame: initialFrame)
@@ -31,6 +35,14 @@ class TransitioningButton: UIButton {
         initialTextColor = button.titleColor(for: .normal)
         initialBackgroundColor = button.backgroundColor
         initialCornerRadius = button.layer.cornerRadius
+    }
+    
+    func setFinalState(to button: UIButton, finalFrame: CGRect) {
+        self.finalFrame = finalFrame
+        finalTextFont = button.titleLabel?.font
+        finalBackgroundColor = button.backgroundColor
+        finalTextColor = button.titleColor(for: .normal)
+        finalCornerRadius = button.layer.cornerRadius
     }
     
     required init?(coder aDecoder: NSCoder) {

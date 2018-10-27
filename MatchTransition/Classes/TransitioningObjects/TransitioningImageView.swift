@@ -12,8 +12,12 @@ class TransitioningImageView: UIImageView {
     private(set) var initialFrame: CGRect!
     private(set) var initialCornerRadius: CGFloat!
     
-    var finalFrame: CGRect!
-    var finalCornerRadius: CGFloat!
+    private(set) var finalFrame: CGRect!
+    private(set) var finalCornerRadius: CGFloat!
+    
+    var wantsCornerRadiusTransition: Bool {
+        return initialCornerRadius != finalCornerRadius
+    }
     
     init(with imageView: UIImageView, id: Int, initialFrame: CGRect) {
         super.init(frame: initialFrame)
@@ -27,6 +31,11 @@ class TransitioningImageView: UIImageView {
         layer.cornerRadius = imageView.layer.cornerRadius
         layer.masksToBounds = imageView.layer.masksToBounds
         clipsToBounds = true
+    }
+    
+    func setFinalState(to imageView: UIImageView, finalFrame: CGRect) {
+        self.finalFrame = finalFrame
+        finalCornerRadius = imageView.layer.cornerRadius
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -30,6 +30,8 @@ class CardCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        backgroundColor = .clear
+        
         [dateLabel1, dateLabel2, dateLabel3, monthLabel, nextDateLabel].forEach({ $0?.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1) })
         contentView.backgroundColor = UIColor.white
         autoresizesSubviews = true
@@ -52,7 +54,7 @@ class CardCollectionViewCell: UICollectionViewCell {
             view?.layer.masksToBounds = true
         }
         
-        contentView.layer.cornerRadius = 2
+        contentView.layer.cornerRadius = 4
         contentView.layer.masksToBounds = true
         
         layer.shadowColor = UIColor.black.cgColor

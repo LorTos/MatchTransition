@@ -13,9 +13,9 @@ class TransitioningLabel: UILabel {
     private(set) var initialFont: UIFont!
     private(set) var initialTextColor: UIColor!
     
-    var finalFrame: CGRect!
-    var finalFont: UIFont!
-    var finalTextColor: UIColor!
+    private(set) var finalFrame: CGRect!
+    private(set) var finalFont: UIFont!
+    private(set) var finalTextColor: UIColor!
     
     init(with label: UILabel, id: Int, initialFrame: CGRect) {
         super.init(frame: initialFrame)
@@ -29,6 +29,12 @@ class TransitioningLabel: UILabel {
         textAlignment = label.textAlignment
         numberOfLines = label.numberOfLines
         backgroundColor = UIColor.clear
+    }
+    
+    func setFinalState(to label: UILabel, finalFrame: CGRect) {
+        self.finalFrame = finalFrame
+        finalFont = label.font
+        finalTextColor = label.textColor
     }
     
     required init?(coder aDecoder: NSCoder) {
