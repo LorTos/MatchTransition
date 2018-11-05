@@ -46,8 +46,8 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         // Initial and final view
         let toView = transitionContext.view(forKey: .to)!
         let fromView = transitionContext.view(forKey: .from)!
-        let initialView = isPresenting ? fromView : transitionContext.view(forKey: .to)!
-        let detailsView = isPresenting ? toView : transitionContext.view(forKey: .from)!
+        let initialView = isPresenting ? fromView : toView
+        let detailsView = isPresenting ? toView : fromView
         
         if isPresenting {
             detailsView.alpha = 0
