@@ -48,22 +48,22 @@ class CollectionViewController: UICollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         
-        detailsViewController.selectedCard = selectedLocation
+        detailsViewController.cardModel = selectedLocation
         
         MatchTransitionManager.shared.setup(cell: selectedCell, to: detailsViewController, with: [
             Match(tag: "container", from: selectedCell.contentView, to: detailsViewController.view),
-            Match(tag: "imageView", from: selectedCell.backgroundImageView, to: detailsViewController.backgroundImageView),
-            Match(tag: "title", from: selectedCell.mainTitleLabel, to: detailsViewController.locationTitleLabel),
-            Match(tag: "pinImage", from: selectedCell.pinImageView, to: detailsViewController.pinImageView),
-            Match(tag: "location", from: selectedCell.locationLabel, to: detailsViewController.locationLabel),
-            Match(tag: "nextDateString", from: selectedCell.nextDateLabel, to: detailsViewController.nextDateLabel),
-            Match(tag: "month", from: selectedCell.monthLabel, to: detailsViewController.monthLabel),
-            Match(tag: "dateView1", from: selectedCell.dateView1, to: detailsViewController.dateView1),
-            Match(tag: "dateLabel1", from: selectedCell.dateLabel1, to: detailsViewController.dateLabel1),
-            Match(tag: "dateView2", from: selectedCell.dateView2, to: detailsViewController.dateView2),
-            Match(tag: "dateLabel2", from: selectedCell.dateLabel2, to: detailsViewController.dateLabel2),
-            Match(tag: "dateView3", from: selectedCell.dateView3, to: detailsViewController.dateView3),
-            Match(tag: "dateLabel3", from: selectedCell.dateLabel3, to: detailsViewController.dateLabel3)
+            Match(tag: "imageView", from: selectedCell.backgroundImageView, to: detailsViewController.header.backgroundImageView),
+            Match(tag: "title", from: selectedCell.mainTitleLabel, to: detailsViewController.header.titleLabel),
+            Match(tag: "pinImage", from: selectedCell.pinImageView, to: detailsViewController.header.locationIcon),
+            Match(tag: "location", from: selectedCell.locationLabel, to: detailsViewController.header.locationLabel),
+            Match(tag: "nextDateString", from: selectedCell.nextDateLabel, to: detailsViewController.footerView.nextDatesLabel),
+            Match(tag: "month", from: selectedCell.monthLabel, to: detailsViewController.footerView.monthLabel),
+            Match(tag: "dateView1", from: selectedCell.dateView1, to: detailsViewController.footerView.dateView1),
+            Match(tag: "dateLabel1", from: selectedCell.dateLabel1, to: detailsViewController.footerView.dateLabel1),
+            Match(tag: "dateView2", from: selectedCell.dateView2, to: detailsViewController.footerView.dateView2),
+            Match(tag: "dateLabel2", from: selectedCell.dateLabel2, to: detailsViewController.footerView.dateLabel2),
+            Match(tag: "dateView3", from: selectedCell.dateView3, to: detailsViewController.footerView.dateView3),
+            Match(tag: "dateLabel3", from: selectedCell.dateLabel3, to: detailsViewController.footerView.dateLabel3)
             ])
         
         present(detailsViewController, animated: true, completion: nil)

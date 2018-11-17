@@ -31,6 +31,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         backgroundColor = .clear
+        [mainTitleLabel, locationLabel].forEach({ $0?.textColor = UIColor.white })
         
         [dateLabel1, dateLabel2, dateLabel3, monthLabel, nextDateLabel].forEach({ $0?.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1) })
         contentView.backgroundColor = UIColor.white
