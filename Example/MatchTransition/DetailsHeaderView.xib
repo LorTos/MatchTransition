@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsHeaderView" customModule="MatchTransition_Example" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundImageView" destination="61Q-2M-Kva" id="0Mm-9h-9wN"/>
-                <outlet property="cancelButton" destination="qJ1-gB-LtJ" id="GKN-6o-3Gh"/>
                 <outlet property="locationIcon" destination="crC-YR-JaB" id="5hM-0U-e6x"/>
                 <outlet property="locationLabel" destination="iCS-aq-51Q" id="kfQ-Ug-5sj"/>
                 <outlet property="titleLabel" destination="j9w-2G-1ar" id="dR2-ge-grB"/>
@@ -29,22 +28,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9w-2G-1ar">
-                    <rect key="frame" x="16" y="16" width="283" height="43"/>
+                    <rect key="frame" x="16" y="16" width="73" height="43"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJ1-gB-LtJ">
-                    <rect key="frame" x="315" y="16" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Pof-Tq-BF3"/>
-                        <constraint firstAttribute="width" constant="44" id="zkI-BD-ThZ"/>
-                    </constraints>
-                    <state key="normal" image="cancel_icon"/>
-                    <connections>
-                        <action selector="tappedOnCancel:" destination="-1" eventType="touchUpInside" id="jzP-ZI-KC1"/>
-                    </connections>
-                </button>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uqi-EJ-XUj">
                     <rect key="frame" x="16" y="200" width="343" height="24"/>
                     <subviews>
@@ -74,10 +62,8 @@
                 <constraint firstItem="j9w-2G-1ar" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="5Zo-5R-6wv"/>
                 <constraint firstItem="61Q-2M-Kva" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="EMi-ek-AO9"/>
                 <constraint firstItem="uqi-EJ-XUj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="LTc-Ne-tJ0"/>
-                <constraint firstItem="qJ1-gB-LtJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="Ocw-wt-3Nr"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qJ1-gB-LtJ" secondAttribute="trailing" constant="16" id="PrE-si-QTO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="61Q-2M-Kva" secondAttribute="trailing" id="TRb-Se-HIM"/>
-                <constraint firstItem="qJ1-gB-LtJ" firstAttribute="leading" secondItem="j9w-2G-1ar" secondAttribute="trailing" constant="16" id="Ucm-9Q-iZx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="j9w-2G-1ar" secondAttribute="trailing" constant="78" id="izS-Hb-UpF"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uqi-EJ-XUj" secondAttribute="bottom" constant="16" id="jlq-ej-8ad"/>
                 <constraint firstItem="j9w-2G-1ar" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="rVq-ZP-Bzx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="61Q-2M-Kva" secondAttribute="bottom" id="vOx-LX-EkQ"/>
@@ -88,7 +74,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cancel_icon" width="24" height="24"/>
         <image name="pin_icon" width="15" height="22"/>
     </resources>
 </document>

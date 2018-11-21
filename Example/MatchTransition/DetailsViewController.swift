@@ -31,7 +31,6 @@ class DetailsViewController: UIViewController {
     private func setupHeader() {
         header = DetailsHeaderView()
         header.setup(with: cardModel)
-        header.delegate = self
         tableView.tableHeaderView = header
     }
     
@@ -42,12 +41,11 @@ class DetailsViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
-}
-
-extension DetailsViewController: DetailsHeaderViewDelegate {
-    func tappedOnCancel() {
+    
+    @IBAction func tappedOnCancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {

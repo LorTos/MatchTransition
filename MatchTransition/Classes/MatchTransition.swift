@@ -62,11 +62,16 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
             // Start presentingAnimation
             presentingAnimation(transitionContext, detailsView, fromView: fromView, toView: toView, containerView: containerView)
         } else {
+            // Set final states for detailsView views
+            delegate.setFinalState(forObjectsInView: detailsView)
+            
             // Setup presentation for dismissal
             setupDismissalAnimation(containerView)
+            
             detailsView.removeFromSuperview()
             containerView.insertSubview(initialView, at: 0)
             initialView.alpha = 1
+            
             // Start dismissalAnimation
             dismissalAnimation(transitionContext)
         }

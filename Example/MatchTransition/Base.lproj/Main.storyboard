@@ -61,46 +61,7 @@
                                                             <string key="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur blandit elit, a lobortis mi sagittis eu. Nam in maximus sapien. Phasellus venenatis urna vel sapien ornare mattis. Fusce ullamcorper aliquam ligula, id imperdiet massa rutrum vel.</string>
                                                             <attributes>
                                                                 <font key="NSFont" size="16" name="SFProText-Light"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5583333333333333" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                    <tabStops>
-                                                                        <textTab alignment="left" location="28">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="56">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="84">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="112">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="140">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="168">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="196">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="224">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="252">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="280">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="308">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                        <textTab alignment="left" location="336">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                    </tabStops>
-                                                                </paragraphStyle>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5583333333333333" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -124,6 +85,17 @@
                                     <constraint firstAttribute="height" priority="750" constant="144" id="QE3-oq-WYl"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5J-Q8-USa">
+                                <rect key="frame" x="314" y="36" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="MXD-1R-IMn"/>
+                                    <constraint firstAttribute="height" constant="45" id="pkd-Vk-JiP"/>
+                                </constraints>
+                                <state key="normal" image="cancel_icon"/>
+                                <connections>
+                                    <action selector="tappedOnCancel:" destination="iRG-dL-kIC" eventType="touchUpInside" id="tPM-Y6-dP4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -134,6 +106,8 @@
                             <constraint firstItem="d76-lB-q0O" firstAttribute="top" secondItem="tXf-bz-6Li" secondAttribute="bottom" id="Yu7-KS-Qmy"/>
                             <constraint firstItem="O6f-LY-cBb" firstAttribute="trailing" secondItem="tXf-bz-6Li" secondAttribute="trailing" id="ajv-2P-FTR"/>
                             <constraint firstItem="O6f-LY-cBb" firstAttribute="bottom" secondItem="d76-lB-q0O" secondAttribute="bottom" id="nWE-dT-abe"/>
+                            <constraint firstItem="h5J-Q8-USa" firstAttribute="trailing" secondItem="O6f-LY-cBb" secondAttribute="trailing" constant="-16" id="oVa-Uu-BV3"/>
+                            <constraint firstItem="h5J-Q8-USa" firstAttribute="top" secondItem="O6f-LY-cBb" secondAttribute="top" constant="16" id="rto-jE-jZd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O6f-LY-cBb"/>
                     </view>
@@ -147,4 +121,7 @@
             <point key="canvasLocation" x="685.60000000000002" y="76.911544227886068"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cancel_icon" width="24" height="24"/>
+    </resources>
 </document>
