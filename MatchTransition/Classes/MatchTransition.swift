@@ -71,7 +71,6 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
             detailsView.removeFromSuperview()
             containerView.insertSubview(initialView, at: 0)
             initialView.alpha = 1
-            
             // Start dismissalAnimation
             dismissalAnimation(transitionContext)
         }
@@ -82,7 +81,6 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         blurView.effect = nil
         containerView.addSubview(blurView)
         if let container = transitioningViews.first(where: { $0.isBaseContainer }) {
-            //TODO: Handle corner radius and roundCorners Function
             container.frame = container.initialFrame
             container.backgroundColor = container.initialBackgroundColor
             
@@ -119,12 +117,17 @@ class MatchTransition: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: 0.1) {
             self.blurView.effect = UIBlurEffect(style: .light)
         }
-        
+
         containerView.bringSubview(toFront: toView)
         UIView.animate(withDuration: 0.2, delay: transitionDuration, options: .curveEaseInOut, animations: {
             detailsView.alpha = 1
-        }, completion: nil)
-        
+        }, completion: { _ in
+            self.transitioningViews.forEach({ $0.removeFromSuperview() })
+            self.transitioningImages.forEach({ $0.removeFromSuperview() })
+            self.transitioningButtons.forEach({ $0.removeFromSuperview() })
+            self.transitioningLabels.forEach({ $0.removeFromSuperview() })
+        })
+
         UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.transitioningViews.forEach({ view in
                 view.frame = view.finalFrame
