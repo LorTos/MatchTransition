@@ -24,9 +24,8 @@ class TransitioningImageView: UIImageView {
         nameID = id
         self.initialFrame = initialFrame
         
-        image = imageView.image
-        
         contentMode = imageView.contentMode
+        image = imageView.image
         initialCornerRadius = imageView.layer.cornerRadius
         layer.cornerRadius = imageView.layer.cornerRadius
         layer.masksToBounds = imageView.layer.masksToBounds
