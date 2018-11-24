@@ -9,16 +9,17 @@
 import UIKit
 import MatchTransition
 
-private let reuseIdentifier = "CardCollectionViewCell"
-
-class CollectionViewController: UICollectionViewController {
-
+class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    private let reuseIdentifier = "CardCollectionViewCell"
+    
     let data: [CardModel] = [
         CardModel(image: #imageLiteral(resourceName: "Thailand"), title: "West Islands Boat Tour", location: "Thailand".uppercased(), month: "April".uppercased(), dates: [15, 19, 24]),
         CardModel(image: #imageLiteral(resourceName: "Positano"), title: "2-Day Positano City Tour", location: "Positano, Italy", month: "April".uppercased(), dates: [17, 19, 21]),
         CardModel(image: #imageLiteral(resourceName: "Bali"), title: "3-Day Surf Lessons", location: "Bali, Indonesia".uppercased(), month: "May", dates: [4, 9, 14]),
-         CardModel(image: #imageLiteral(resourceName: "MonumentValley"), title: "Monument Valley Exploration", location: "Monument Valley, USA".uppercased(), month: "May", dates: [15, 22, 28])
+        CardModel(image: #imageLiteral(resourceName: "MonumentValley"), title: "Monument Valley Exploration", location: "Monument Valley, USA".uppercased(), month: "May", dates: [15, 22, 28])
     ]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +27,8 @@ class CollectionViewController: UICollectionViewController {
         collectionView!.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         collectionView!.contentInset = UIEdgeInsets(top: 32, left: 0, bottom: 32, right: 0)
     }
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
+    
+    // MARK: - CollectionView Delegate
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
@@ -42,12 +40,25 @@ class CollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presentDetailsForCard(at: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let sideLength = UIScreen.main.bounds.width - 64
+        return CGSize(width: sideLength, height: sideLength)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 24
+    }
+    
+    // MARK: - Present Card Details
+    private func presentDetailsForCard(at indexPath: IndexPath) {
         let selectedLocation = data[indexPath.row]
         let selectedCell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        
         detailsViewController.cardModel = selectedLocation
         
         MatchTransitionManager.shared.setup(cell: selectedCell, to: detailsViewController, with: [
@@ -67,16 +78,5 @@ class CollectionViewController: UICollectionViewController {
             ])
         
         present(detailsViewController, animated: true, completion: nil)
-    }
-}
-
-extension CollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let sideLength = UIScreen.main.bounds.width - 64
-        return CGSize(width: sideLength, height: sideLength)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 24
     }
 }

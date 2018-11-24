@@ -19,11 +19,7 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        
+        setupTableView()
         setupHeader()
         footerView.setup(with: cardModel)
     }
@@ -33,11 +29,19 @@ class DetailsViewController: UIViewController {
         header.setup(with: cardModel)
         tableView.tableHeaderView = header
     }
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 180
+    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
@@ -45,7 +49,6 @@ class DetailsViewController: UIViewController {
     @IBAction func tappedOnCancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -55,11 +58,5 @@ extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
         return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
     }
 }
