@@ -24,9 +24,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 
 
-<div align="center" style="position: relative">
-    <img src="MatchTransition/Assets/iPhone_mockup_dark.svg" width="60%"/>
-    <img src="MatchTransition/Assets/exampleVid.gif" width="38%" style="position: absolute; top: 15%; left: 31.5%; outline: 2px solid #333; outline-offset: -2px; border: 1px solid #333" />
+<div align="center" >
+    <!-- <img src="MatchTransition/Assets/iPhone_mockup_dark.svg" width="60%"/> -->
+    <!-- <img src="MatchTransition/Assets/exampleVid.gif" width="38%" style="position: absolute; top: 15%; left: 31.5%; outline: 2px solid #333; outline-offset: -2px; border: 1px solid #333" /> -->
+    <img src="MatchTransition/Assets/exampleVid.gif" width="40%" />
 </div>
 
 ## Usage
