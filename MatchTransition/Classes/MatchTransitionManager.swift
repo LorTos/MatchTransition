@@ -19,17 +19,28 @@ public struct Match {
     }
 }
 
+enum TransitionDirection {
+    case presenting
+    case dismissing
+}
+
+protocol MatchTransitionDelegate: class {
+    func setFinalStateForObjects(in view: UIView, direction: TransitionDirection)
+}
+
 public class MatchTransitionManager: NSObject {
     
     //MARK: - Singleton
     public static var shared = MatchTransitionManager()
     override private init() {
         super.init()
-        transition.delegate = self
+        presentTransition.delegate = self
+        dismissTransition.delegate = self
     }
 
     //MARK: - Variables
-    private let transition = MatchTransition()
+    private let presentTransition = MatchTransitionPresentation()
+    private let dismissTransition = MatchTransitionDismissal()
     private let objectManager = MatchTransitionObjectManager()
     
     private var matches: [Match] = []
@@ -78,9 +89,14 @@ public class MatchTransitionManager: NSObject {
 
 //MARK: - MatchTransitionDelegate
 extension MatchTransitionManager: MatchTransitionDelegate {
-    func setFinalState(forObjectsInView view: UIView) {
+    func setFinalStateForObjects(in view: UIView, direction: TransitionDirection) {
         objectManager.setupFinalState(for: view) {
-            self.transition.setTransitioningObjects(views: self.objectManager.views, imageViews: self.objectManager.imageViews, labels: self.objectManager.labels, buttons: self.objectManager.buttons)
+            switch direction {
+            case .presenting:
+                self.presentTransition.setTransitioningObjects(views: self.objectManager.views, imageViews: self.objectManager.imageViews, labels: self.objectManager.labels, buttons: self.objectManager.buttons)
+            case .dismissing:
+                self.dismissTransition.setTransitioningObjects(views: self.objectManager.views, imageViews: self.objectManager.imageViews, labels: self.objectManager.labels, buttons: self.objectManager.buttons)                
+            }
         }
     }
 }
@@ -88,11 +104,10 @@ extension MatchTransitionManager: MatchTransitionDelegate {
 //MARK: - UIViewControllerTransitioningDelegate
 extension MatchTransitionManager: UIViewControllerTransitioningDelegate {
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isPresenting = true
-        return transition
+        return presentTransition
+        
     }
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.isPresenting = false
-        return transition
+        return dismissTransition
     }
 }
