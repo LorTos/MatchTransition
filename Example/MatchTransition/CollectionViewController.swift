@@ -20,10 +20,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         CardModel(image: #imageLiteral(resourceName: "MonumentValley"), title: "Monument Valley Exploration", location: "Monument Valley, USA".uppercased(), month: "May", dates: [15, 22, 28])
     ]
     
+    let manager = MatchTransitionManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Collection example"
         collectionView!.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         collectionView!.contentInset = UIEdgeInsets(top: 32, left: 0, bottom: 32, right: 0)
     }
@@ -61,7 +63,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         detailsViewController.cardModel = selectedLocation
         
-        MatchTransitionManager.shared.setup(cell: selectedCell, to: detailsViewController, with: [
+        manager.setup(cell: selectedCell, to: detailsViewController, with: [
             Match(tag: "container", from: selectedCell.contentView, to: detailsViewController.view),
             Match(tag: "imageView", from: selectedCell.backgroundImageView, to: detailsViewController.header.backgroundImageView),
             Match(tag: "title", from: selectedCell.mainTitleLabel, to: detailsViewController.header.titleLabel),

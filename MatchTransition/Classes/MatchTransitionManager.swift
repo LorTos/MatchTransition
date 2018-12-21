@@ -30,9 +30,7 @@ protocol MatchTransitionDelegate: class {
 
 public class MatchTransitionManager: NSObject {
     
-    //MARK: - Singleton
-    public static var shared = MatchTransitionManager()
-    override private init() {
+    public override init() {
         super.init()
         presentTransition.delegate = self
         dismissTransition.delegate = self
@@ -57,8 +55,8 @@ public class MatchTransitionManager: NSObject {
     
     //MARK: - Private funcs
     private func setupMatches(between cell: UITableViewCell, and controller: UIViewController, matches: [Match]) {
-        if controller.parent is UINavigationController {
-            controller.parent!.transitioningDelegate = self
+        if let navController = controller.navigationController {
+            navController.delegate = self
         } else {
             controller.transitioningDelegate = self
         }
@@ -72,8 +70,8 @@ public class MatchTransitionManager: NSObject {
     }
     
     private func setupMatches(between cell: UICollectionViewCell, and controller: UIViewController, matches: [Match]) {
-        if controller.parent is UINavigationController {
-            controller.parent!.transitioningDelegate = self
+        if let navController = controller.navigationController {
+            navController.delegate = self
         } else {
             controller.transitioningDelegate = self
         }
@@ -109,5 +107,17 @@ extension MatchTransitionManager: UIViewControllerTransitioningDelegate {
     }
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return dismissTransition
+    }
+}
+
+extension MatchTransitionManager: UINavigationControllerDelegate {
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        switch operation {
+        case .push:
+            return presentTransition
+        case .pop:
+            return dismissTransition
+        default: return nil
+        }
     }
 }

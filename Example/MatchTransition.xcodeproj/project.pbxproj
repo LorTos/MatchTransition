@@ -18,6 +18,8 @@
 		FE4242CE20B7682400E439DB /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4242CC20B7682400E439DB /* CardCollectionViewCell.swift */; };
 		FE4242CF20B7682400E439DB /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4242CD20B7682400E439DB /* CardCollectionViewCell.xib */; };
 		FE4242D120B7725200E439DB /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4242D020B7725200E439DB /* CardModel.swift */; };
+		FE617AB521C1C6E9002C54FC /* ExampleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE617AB421C1C6E9002C54FC /* ExampleSelectionViewController.swift */; };
+		FE617AB721C1CADB002C54FC /* NavigationFromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE617AB621C1CADB002C54FC /* NavigationFromViewController.swift */; };
 		FEFC885E21A02AE300A6970F /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFC885D21A02AE300A6970F /* DetailsHeaderView.swift */; };
 		FEFC886021A02AF300A6970F /* DetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEFC885F21A02AF300A6970F /* DetailsHeaderView.xib */; };
 		FEFC886321A0301500A6970F /* DetailsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFC886221A0301500A6970F /* DetailsFooterView.swift */; };
@@ -58,6 +60,8 @@
 		FE4242CC20B7682400E439DB /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE4242CD20B7682400E439DB /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		FE4242D020B7725200E439DB /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		FE617AB421C1C6E9002C54FC /* ExampleSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSelectionViewController.swift; sourceTree = "<group>"; };
+		FE617AB621C1CADB002C54FC /* NavigationFromViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationFromViewController.swift; sourceTree = "<group>"; };
 		FEFC885D21A02AE300A6970F /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
 		FEFC885F21A02AF300A6970F /* DetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsHeaderView.xib; sourceTree = "<group>"; };
 		FEFC886221A0301500A6970F /* DetailsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFooterView.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 		FE1CC0EB20BAD1BE00A9F1DA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FE617AB421C1C6E9002C54FC /* ExampleSelectionViewController.swift */,
+				FE617AB621C1CADB002C54FC /* NavigationFromViewController.swift */,
 				FE07D76120B6C09700DD2389 /* CollectionViewController.swift */,
 				FEFC886621A0378000A6970F /* DetailsViewController.swift */,
 			);
@@ -383,11 +389,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE617AB521C1C6E9002C54FC /* ExampleSelectionViewController.swift in Sources */,
 				FEFC885E21A02AE300A6970F /* DetailsHeaderView.swift in Sources */,
 				FE07D76220B6C09700DD2389 /* CollectionViewController.swift in Sources */,
 				FE4242D120B7725200E439DB /* CardModel.swift in Sources */,
 				FE4242CE20B7682400E439DB /* CardCollectionViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				FE617AB721C1CADB002C54FC /* NavigationFromViewController.swift in Sources */,
 				FEFC886321A0301500A6970F /* DetailsFooterView.swift in Sources */,
 				FEFC886721A0378000A6970F /* DetailsViewController.swift in Sources */,
 			);
