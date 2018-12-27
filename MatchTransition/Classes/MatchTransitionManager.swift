@@ -52,6 +52,20 @@ public class MatchTransitionManager: NSObject {
         self.matches = matches
         setupMatches(between: cell, and: controller, matches: matches)
     }
+    public func setupTransition(to finalController: UIViewController, with matches: [Match]) {
+        self.matches = matches
+        
+        if let navController = finalController.navigationController {
+            navController.delegate = self
+        } else {
+            finalController.transitioningDelegate = self
+        }
+        objectManager.resetData()
+        matches.forEach({
+            objectManager.setTag($0.tag, for: $0.from)
+            objectManager.setTag($0.tag, for: $0.to)
+        })
+    }
     
     //MARK: - Private funcs
     private func setupMatches(between cell: UITableViewCell, and controller: UIViewController, matches: [Match]) {

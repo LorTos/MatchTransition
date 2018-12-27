@@ -59,9 +59,45 @@
                     <view key="view" contentMode="scaleToFill" id="T0f-lz-g5k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hE3-4u-ra4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDx-Bo-NOf">
+                                <rect key="frame" x="20" y="592" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Ne-22-DOl"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnV-Ip-AFg">
+                                <rect key="frame" x="20" y="522" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fxm-He-l09"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9j6-DT-Xmo" firstAttribute="trailing" secondItem="DnV-Ip-AFg" secondAttribute="trailing" constant="20" id="5bD-q6-TPp"/>
+                            <constraint firstAttribute="bottom" secondItem="hE3-4u-ra4" secondAttribute="bottom" id="5oH-Xq-YJU"/>
+                            <constraint firstItem="eDx-Bo-NOf" firstAttribute="leading" secondItem="9j6-DT-Xmo" secondAttribute="leading" constant="20" id="AMt-bE-Dn2"/>
+                            <constraint firstItem="9j6-DT-Xmo" firstAttribute="trailing" secondItem="eDx-Bo-NOf" secondAttribute="trailing" constant="20" id="M0c-pb-jKm"/>
+                            <constraint firstItem="9j6-DT-Xmo" firstAttribute="bottom" secondItem="eDx-Bo-NOf" secondAttribute="bottom" constant="25" id="OIo-vo-XyF"/>
+                            <constraint firstAttribute="trailing" secondItem="hE3-4u-ra4" secondAttribute="trailing" id="SLb-cA-ZRm"/>
+                            <constraint firstItem="hE3-4u-ra4" firstAttribute="top" secondItem="T0f-lz-g5k" secondAttribute="top" id="SqK-xg-3X5"/>
+                            <constraint firstItem="eDx-Bo-NOf" firstAttribute="top" secondItem="DnV-Ip-AFg" secondAttribute="bottom" constant="20" id="XDe-2s-aY2"/>
+                            <constraint firstItem="hE3-4u-ra4" firstAttribute="leading" secondItem="T0f-lz-g5k" secondAttribute="leading" id="eeo-tC-jch"/>
+                            <constraint firstItem="DnV-Ip-AFg" firstAttribute="leading" secondItem="9j6-DT-Xmo" secondAttribute="leading" constant="20" id="wUu-xM-Acz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9j6-DT-Xmo"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="hE3-4u-ra4" id="0zC-1N-hBb"/>
+                        <outlet property="facebookButton" destination="DnV-Ip-AFg" id="jJ5-gq-Cdi"/>
+                        <outlet property="loginButton" destination="eDx-Bo-NOf" id="12y-u5-92M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEl-Cc-tyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

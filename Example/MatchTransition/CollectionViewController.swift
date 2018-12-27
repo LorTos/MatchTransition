@@ -25,7 +25,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Collection example"
+        navigationItem.title = "CollectionView"
         collectionView!.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         collectionView!.contentInset = UIEdgeInsets(top: 32, left: 0, bottom: 32, right: 0)
     }

@@ -10,16 +10,34 @@ import UIKit
 
 class ExampleSelectionViewController: UITableViewController {
     
-    let tableModel = ["CollectionView", "NavigationController"]
+    private let tableModel = ["CollectionView", "NavigationController"]
+    private var defaultNavAppearance: NavConfig?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.rowHeight = 64
         tableView.tableFooterView = UIView()
-        
-        navigationController?.navigationBar.tintColor = UIColor.black.withAlphaComponent(0.8)
+        setupInitialNavigationBar()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resetNavigation()
+    }
+    private func setupInitialNavigationBar() {
         navigationItem.title = "Examples"
+        guard let navBar = navigationController?.navigationBar else { return }
+        navBar.tintColor = UIColor.black.withAlphaComponent(0.8)
+        defaultNavAppearance = NavConfig(navBar: navBar)
+    }
+    private func resetNavigation() {
+        guard   let navBar = navigationController?.navigationBar,
+                let defaultAppearance = defaultNavAppearance else { return }
+        navBar.tintColor = defaultAppearance.tintColor
+        navBar.barTintColor = defaultAppearance.barTintColor
+        navBar.shadowImage = defaultAppearance.shadowImage
+        navBar.setBackgroundImage(defaultAppearance.backgroundImage, for: .default)
+        navBar.isTranslucent = defaultAppearance.isTranslucent
     }
 
     // MARK: - Table view data source

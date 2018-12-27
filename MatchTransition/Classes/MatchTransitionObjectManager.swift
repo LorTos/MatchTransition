@@ -8,11 +8,13 @@
 import UIKit
 
 class MatchTransitionObjectManager {
-    enum CellType {
+    enum TransitionType {
         case tableCell(UITableViewCell)
         case collectionCell(UICollectionViewCell)
+        case viewController(UIViewController)
     }
-    private var cellType: CellType!
+
+    private var type: TransitionType!
     
     private(set) var tags: [Int] = []
     
@@ -33,17 +35,26 @@ class MatchTransitionObjectManager {
     }
     
     //MARK: - Creates transitioning objects
+    func transitioning(_ transitionType: TransitionType) {
+        type = transitionType
+        findObjectForTags()
+    }
     func transitioningTableCell(_ cell: UITableViewCell) {
-        cellType = .tableCell(cell)
+        type = .tableCell(cell)
         findObjectForTags()
     }
     func transitioningCollectionCell(_ cell: UICollectionViewCell) {
-        cellType = .collectionCell(cell)
+        type = .collectionCell(cell)
         findObjectForTags()
     }
+    func transitioningController(_ viewController: UIViewController) {
+        type = .viewController(viewController)
+        findObjectForTags()
+    }
+    
     private func findObjectForTags() {
         tags.forEach { tag in
-            switch cellType {
+            switch type {
             case .tableCell(let cell)?:
                 if let object = cell.viewWithTag(tag) {
                     createTransitioningObject(object)
@@ -52,12 +63,16 @@ class MatchTransitionObjectManager {
                 if let object = cell.viewWithTag(tag) {
                     createTransitioningObject(object)
                 }
+            case .viewController(let controller)?:
+                if let object = controller.view.viewWithTag(tag) {
+                    createTransitioningObject(object)
+                }
             default: break
             }
         }
     }
     private func createTransitioningObject(_ object: UIView, ignoresSafeArea: Bool = false) {
-        switch cellType {
+        switch type {
         case .tableCell(let cell)?:
             var convertedFrame = object.convert(object.bounds, to: cell.contentView)
             if let button = object as? UIButton {
@@ -70,7 +85,7 @@ class MatchTransitionObjectManager {
                 let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: convertedFrame)
                 imageViews.append(transitioningObject)
             } else {
-                let isBaseContainer = object === cell.contentView
+                let isBaseContainer = object === cell.contentView || object.tag == "container".hashValue
                 if isBaseContainer {
                     convertedFrame = object.convert(object.bounds, to: UIScreen.main.coordinateSpace)
                 }
@@ -89,7 +104,27 @@ class MatchTransitionObjectManager {
                 let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: convertedFrame)
                 imageViews.append(transitioningObject)
             } else {
-                let isBaseContainer = object === cell.contentView
+                let isBaseContainer = object === cell.contentView || object.tag == "container".hashValue
+                if isBaseContainer {
+                    convertedFrame = object.convert(object.bounds, to: UIScreen.main.coordinateSpace)
+                }
+                
+                let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: convertedFrame, isBaseContainer: isBaseContainer)
+                views.append(transitioningObject)
+            }
+        case .viewController(let controller)?:
+            var convertedFrame = object.convert(object.bounds, to: controller.view)
+            if let button = object as? UIButton {
+                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: convertedFrame)
+                buttons.append(transitioningObject)
+            } else if let label = object as? UILabel {
+                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: convertedFrame)
+                labels.append(transitioningObject)
+            } else if let imageView = object as? UIImageView {
+                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: convertedFrame)
+                imageViews.append(transitioningObject)
+            } else {
+                let isBaseContainer = object === controller.view || object.tag == "container".hashValue
                 if isBaseContainer {
                     convertedFrame = object.convert(object.bounds, to: UIScreen.main.coordinateSpace)
                 }
