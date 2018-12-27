@@ -39,18 +39,6 @@ class MatchTransitionObjectManager {
         type = transitionType
         findObjectForTags()
     }
-    func transitioningTableCell(_ cell: UITableViewCell) {
-        type = .tableCell(cell)
-        findObjectForTags()
-    }
-    func transitioningCollectionCell(_ cell: UICollectionViewCell) {
-        type = .collectionCell(cell)
-        findObjectForTags()
-    }
-    func transitioningController(_ viewController: UIViewController) {
-        type = .viewController(viewController)
-        findObjectForTags()
-    }
     
     private func findObjectForTags() {
         tags.forEach { tag in

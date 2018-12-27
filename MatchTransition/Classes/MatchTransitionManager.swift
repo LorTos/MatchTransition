@@ -29,6 +29,10 @@ protocol MatchTransitionDelegate: class {
 }
 
 public class MatchTransitionManager: NSObject {
+    public enum TransitionType {
+        case modal
+        case push
+    }
     
     public override init() {
         super.init()
@@ -44,58 +48,55 @@ public class MatchTransitionManager: NSObject {
     private var matches: [Match] = []
     
     //MARK: - Initial setup
-    public func setup(cell: UITableViewCell, to controller: UIViewController, with matches: [Match]) {
+    public func setupTransition(from cell: UITableViewCell,
+                                inside initialController: UIViewController,
+                                to finalController: UIViewController,
+                                with matches: [Match],
+                                transitionType: TransitionType)
+    {
+        setupDelegate(for: transitionType, between: initialController, and: finalController)
         self.matches = matches
-        setupMatches(between: cell, and: controller, matches: matches)
+        setTags()
+        objectManager.transitioning(.tableCell(cell))
     }
-    public func setup(cell: UICollectionViewCell, to controller: UIViewController, with matches: [Match]) {
+    
+    public func setupTransition(from cell: UICollectionViewCell,
+                                inside initialController: UIViewController,
+                                to finalController: UIViewController,
+                                with matches: [Match],
+                                transitionType: TransitionType)
+    {
+        setupDelegate(for: transitionType, between: initialController, and: finalController)
         self.matches = matches
-        setupMatches(between: cell, and: controller, matches: matches)
+        setTags()
+        objectManager.transitioning(.collectionCell(cell))
     }
-    public func setupTransition(to finalController: UIViewController, with matches: [Match]) {
+    
+    public func setupTransition(from initialController: UIViewController,
+                                to finalController: UIViewController,
+                                with matches: [Match],
+                                transitionType: TransitionType)
+    {
+        setupDelegate(for: transitionType, between: initialController, and: finalController)
         self.matches = matches
-        
-        if let navController = finalController.navigationController {
-            navController.delegate = self
-        } else {
+        setTags()
+        objectManager.transitioning(.viewController(initialController))
+    }
+    
+    private func setupDelegate(for transitionType: TransitionType, between initialController: UIViewController, and finalController: UIViewController) {
+        switch transitionType {
+        case .modal:
             finalController.transitioningDelegate = self
+        case .push:
+            initialController.navigationController?.delegate = self
         }
-        objectManager.resetData()
-        matches.forEach({
-            objectManager.setTag($0.tag, for: $0.from)
-            objectManager.setTag($0.tag, for: $0.to)
-        })
     }
-    
-    //MARK: - Private funcs
-    private func setupMatches(between cell: UITableViewCell, and controller: UIViewController, matches: [Match]) {
-        if let navController = controller.navigationController {
-            navController.delegate = self
-        } else {
-            controller.transitioningDelegate = self
-        }
-        
+    private func setTags() {
         objectManager.resetData()
         matches.forEach({
             objectManager.setTag($0.tag, for: $0.from)
             objectManager.setTag($0.tag, for: $0.to)
         })
-        objectManager.transitioningTableCell(cell)
-    }
-    
-    private func setupMatches(between cell: UICollectionViewCell, and controller: UIViewController, matches: [Match]) {
-        if let navController = controller.navigationController {
-            navController.delegate = self
-        } else {
-            controller.transitioningDelegate = self
-        }
-        
-        objectManager.resetData()
-        matches.forEach({
-            objectManager.setTag($0.tag, for: $0.from)
-            objectManager.setTag($0.tag, for: $0.to)
-        })
-        objectManager.transitioningCollectionCell(cell)
     }
 }
 

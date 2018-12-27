@@ -92,12 +92,6 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
         UIView.animate(withDuration: transitionDuration) {
             self.blurView.effect = nil
         }
-        UIView.animate(withDuration: 0.25, delay: transitionDuration, options: .curveEaseInOut, animations: {
-            self.transitioningViews.forEach({ $0.alpha = 0 })
-            self.transitioningImages.forEach({ $0.alpha = 0 })
-            self.transitioningLabels.forEach({ $0.alpha = 0 })
-            self.transitioningButtons.forEach({ $0.alpha = 0 })
-        })
         UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
             self.transitioningViews.forEach({ view in
                 view.frame = view.initialFrame
@@ -123,15 +117,19 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
                 button.backgroundColor = button.initialBackgroundColor
                 button.layer.cornerRadius = button.initialCornerRadius
             })
-        }) { _ in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            
+        }, completion: {_ in
+            self.transitioningViews.forEach({ $0.removeFromSuperview() })
+            self.transitioningImages.forEach({ $0.removeFromSuperview() })
+            self.transitioningButtons.forEach({ $0.removeFromSuperview() })
+            self.transitioningLabels.forEach({ $0.removeFromSuperview() })
+            self.blurView.removeFromSuperview()
             self.transitioningViews = []
             self.transitioningImages = []
             self.transitioningLabels = []
             self.transitioningButtons = []
             
-            transitionContext.containerView.subviews.forEach({ $0.removeFromSuperview() })
-        }
+            transitionContext.viewController(forKey: .to)?.navigationController?.delegate = nil
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        })
     }
 }

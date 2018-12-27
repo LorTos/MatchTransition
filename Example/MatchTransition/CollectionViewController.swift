@@ -63,7 +63,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         detailsViewController.cardModel = selectedLocation
         
-        manager.setup(cell: selectedCell, to: detailsViewController, with: [
+        let matches = [
             Match(tag: "container", from: selectedCell.contentView, to: detailsViewController.view),
             Match(tag: "imageView", from: selectedCell.backgroundImageView, to: detailsViewController.header.backgroundImageView),
             Match(tag: "title", from: selectedCell.mainTitleLabel, to: detailsViewController.header.titleLabel),
@@ -77,8 +77,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             Match(tag: "dateLabel2", from: selectedCell.dateLabel2, to: detailsViewController.footerView.dateLabel2),
             Match(tag: "dateView3", from: selectedCell.dateView3, to: detailsViewController.footerView.dateView3),
             Match(tag: "dateLabel3", from: selectedCell.dateLabel3, to: detailsViewController.footerView.dateLabel3)
-            ])
-        
+        ]
+        manager.setupTransition(from: selectedCell,
+                                inside: self,
+                                to: detailsViewController,
+                                with: matches,
+                                transitionType: .modal)
         present(detailsViewController, animated: true, completion: nil)
     }
 }

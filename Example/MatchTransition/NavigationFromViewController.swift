@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MatchTransition
 
 class NavigationFromViewController: UIViewController {
     
@@ -19,13 +20,14 @@ class NavigationFromViewController: UIViewController {
                                                      shadowImage: UIImage(),
                                                      backgroundImage: UIImage(),
                                                      isTranslucent: true)
+    let manager = MatchTransitionManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupButtons()
-        backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.image = UIImage(named: "Mountains")
-        backgroundImageView.clipsToBounds = true
+        backgroundImageView.contentMode = .scaleAspectFill
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,6 +50,20 @@ class NavigationFromViewController: UIViewController {
         navBar.shadowImage = transparentNavAppearance.shadowImage
         navBar.setBackgroundImage(transparentNavAppearance.backgroundImage, for: .default)
         navBar.isTranslucent = transparentNavAppearance.isTranslucent
+    }
+    
+    @IBAction func tappedOnButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let destinationVC = storyboard.instantiateViewController(withIdentifier: "NavigationTo") as? NavigationToViewController {
+            let matches: [Match] = [
+                Match(tag: "container", from: view, to: destinationVC.view),
+                Match(tag: "backgroundImage", from: backgroundImageView, to: destinationVC.backgroundImageView),
+                Match(tag: "facebook", from: facebookButton, to: destinationVC.facebookButton),
+                Match(tag: "login", from: loginButton, to: destinationVC.loginButton)
+            ]
+            manager.setupTransition(from: self, to: destinationVC, with: matches, transitionType: .push)
+            navigationController?.pushViewController(destinationVC, animated: true)
+        }
     }
 }
 

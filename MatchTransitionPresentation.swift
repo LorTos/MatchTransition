@@ -88,21 +88,11 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
     // Mark: - Animation
     private func presentingAnimation(_ transitionContext: UIViewControllerContextTransitioning, fromView: UIView, toView: UIView) {
         let containerView = transitionContext.containerView
+        containerView.bringSubview(toFront: toView)
         
         UIView.animate(withDuration: 0.1) {
             self.blurView.effect = UIBlurEffect(style: .light)
         }
-        
-        containerView.bringSubview(toFront: toView)
-        UIView.animate(withDuration: 0.2, delay: transitionDuration, options: .curveEaseInOut, animations: {
-            toView.alpha = 1
-        }, completion: { _ in
-            self.transitioningViews.forEach({ $0.removeFromSuperview() })
-            self.transitioningImages.forEach({ $0.removeFromSuperview() })
-            self.transitioningButtons.forEach({ $0.removeFromSuperview() })
-            self.transitioningLabels.forEach({ $0.removeFromSuperview() })
-        })
-        
         UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.transitioningViews.forEach({ view in
                 view.frame = view.finalFrame
@@ -127,9 +117,21 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
                 button.backgroundColor = button.finalBackgroundColor
                 button.layer.cornerRadius = button.finalCornerRadius
             })
-        }) { _ in
+        }, completion: nil)
+        UIView.animate(withDuration: 0.2, delay: transitionDuration, options: .curveEaseInOut, animations: {
+            toView.alpha = 1
+        }, completion: { _ in
+            self.transitioningViews.forEach({ $0.removeFromSuperview() })
+            self.transitioningImages.forEach({ $0.removeFromSuperview() })
+            self.transitioningButtons.forEach({ $0.removeFromSuperview() })
+            self.transitioningLabels.forEach({ $0.removeFromSuperview() })
+            self.blurView.removeFromSuperview()
+            self.transitioningViews = []
+            self.transitioningImages = []
+            self.transitioningLabels = []
+            self.transitioningButtons = []
+            
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            transitionContext.containerView.subviews.forEach({ $0.removeFromSuperview() })
-        }
+        })
     }
 }
