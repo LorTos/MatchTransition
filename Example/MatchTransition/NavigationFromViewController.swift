@@ -20,7 +20,7 @@ class NavigationFromViewController: UIViewController {
                                                      shadowImage: UIImage(),
                                                      backgroundImage: UIImage(),
                                                      isTranslucent: true)
-    let manager = MatchTransitionManager()
+    let manager = MatchTransitionManager(transitionType: .push)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,10 @@ class NavigationFromViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigation()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.delegate = self
     }
     
     private func setupButtons() {
@@ -55,6 +59,7 @@ class NavigationFromViewController: UIViewController {
     @IBAction func tappedOnButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let destinationVC = storyboard.instantiateViewController(withIdentifier: "NavigationTo") as? NavigationToViewController {
+            destinationVC.manager = manager
             let matches: [Match] = [
                 Match(tag: "container", from: view, to: destinationVC.view),
                 Match(tag: "backgroundImage", from: backgroundImageView, to: destinationVC.backgroundImageView),
@@ -87,5 +92,17 @@ struct NavConfig {
         self.shadowImage = shadowImage
         self.backgroundImage = backgroundImage
         self.isTranslucent = isTranslucent
+    }
+}
+
+extension NavigationFromViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        switch operation {
+        case .push:
+            return manager.transition(for: .presenting)
+        default:
+            navigationController.delegate = nil
+            return nil
+        }
     }
 }

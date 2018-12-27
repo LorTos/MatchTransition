@@ -128,7 +128,6 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
             self.transitioningLabels = []
             self.transitioningButtons = []
             
-            transitionContext.viewController(forKey: .to)?.navigationController?.delegate = nil
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }

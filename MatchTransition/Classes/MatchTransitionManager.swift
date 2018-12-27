@@ -19,13 +19,8 @@ public struct Match {
     }
 }
 
-enum TransitionDirection {
-    case presenting
-    case dismissing
-}
-
 protocol MatchTransitionDelegate: class {
-    func setFinalStateForObjects(in view: UIView, direction: TransitionDirection)
+    func setFinalStateForObjects(in view: UIView, direction: MatchTransitionManager.TransitionDirection)
 }
 
 public class MatchTransitionManager: NSObject {
@@ -33,8 +28,12 @@ public class MatchTransitionManager: NSObject {
         case modal
         case push
     }
+    public enum TransitionDirection {
+        case presenting
+        case dismissing
+    }
     
-    public override init() {
+    public init(transitionType: TransitionType) {
         super.init()
         presentTransition.delegate = self
         dismissTransition.delegate = self
@@ -88,7 +87,7 @@ public class MatchTransitionManager: NSObject {
         case .modal:
             finalController.transitioningDelegate = self
         case .push:
-            initialController.navigationController?.delegate = self
+            return
         }
     }
     private func setTags() {
@@ -97,6 +96,13 @@ public class MatchTransitionManager: NSObject {
             objectManager.setTag($0.tag, for: $0.from)
             objectManager.setTag($0.tag, for: $0.to)
         })
+    }
+    
+    public func transition(for direction: TransitionDirection) -> UIViewControllerAnimatedTransitioning {
+        switch direction {
+        case .presenting: return presentTransition
+        case .dismissing: return dismissTransition
+        }
     }
 }
 
