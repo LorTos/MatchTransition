@@ -164,9 +164,6 @@
                                     <constraint firstAttribute="height" constant="50" id="VbD-Jv-c0h"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="pushController:" destination="8ci-tX-eTH" eventType="touchUpInside" id="Pkt-Vi-Fs7"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

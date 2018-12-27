@@ -40,12 +40,6 @@ class NavigationToViewController: UIViewController {
         loginButton.backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
         signupButton.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     }
-    
-    @IBAction func pushController(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "NavigationTo")
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 extension NavigationToViewController: UITextFieldDelegate {

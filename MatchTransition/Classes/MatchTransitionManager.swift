@@ -7,18 +7,6 @@
 
 import UIKit
 
-public struct Match {
-    public var tag: String
-    public var from: UIView
-    public var to: UIView
-    
-    public init(tag: String, from: UIView, to: UIView) {
-        self.tag = tag
-        self.from = from
-        self.to = to
-    }
-}
-
 protocol MatchTransitionDelegate: class {
     func setFinalStateForObjects(in view: UIView, direction: MatchTransitionManager.TransitionDirection)
 }

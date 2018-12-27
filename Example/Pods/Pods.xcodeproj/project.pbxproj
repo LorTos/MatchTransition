@@ -25,6 +25,7 @@
 		F0242D0E0D12C7431723BA9B43DC752B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
 		FE8AAB8C21BBE13F009F8762 /* MatchTransitionPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8AAB8B21BBE13F009F8762 /* MatchTransitionPresentation.swift */; };
 		FE8AAB8E21BBE2D1009F8762 /* MatchTransitionDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8AAB8D21BBE2D1009F8762 /* MatchTransitionDismissal.swift */; };
+		FEA3F41F21D5484F00D73C1E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA3F41E21D5484F00D73C1E /* Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		FAEF9E431E1F039F5F6BC98FE4060DC2 /* Pods-MatchTransition_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MatchTransition_Tests-resources.sh"; sourceTree = "<group>"; };
 		FE8AAB8B21BBE13F009F8762 /* MatchTransitionPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTransitionPresentation.swift; sourceTree = "<group>"; };
 		FE8AAB8D21BBE2D1009F8762 /* MatchTransitionDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTransitionDismissal.swift; sourceTree = "<group>"; };
+		FEA3F41E21D5484F00D73C1E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				FE8AAB8D21BBE2D1009F8762 /* MatchTransitionDismissal.swift */,
 				A1C55FEF17D347079044E0BDD45A2257 /* MatchTransitionManager.swift */,
 				3F15CA31F5CADD98A06BB5FD22078603 /* MatchTransitionObjectManager.swift */,
+				FEA3F41E21D5484F00D73C1E /* Match.swift */,
 				04F71912EE4714441A53B36F2A49FB49 /* Pod */,
 				477FEE4BDBF8351ED8239A2106669198 /* Support Files */,
 				9F13142AD9B925CEAC180A278AB4CC33 /* TransitioningObjects */,
@@ -388,6 +391,7 @@
 				B974AB54E4B8588578342CA9A95882EE /* MatchTransition-dummy.m in Sources */,
 				FE8AAB8C21BBE13F009F8762 /* MatchTransitionPresentation.swift in Sources */,
 				E7356152FDDDECDC0CDB310F279AB283 /* MatchTransitionManager.swift in Sources */,
+				FEA3F41F21D5484F00D73C1E /* Match.swift in Sources */,
 				BB04595DE5FB4CE61F63515084018F09 /* MatchTransitionObjectManager.swift in Sources */,
 				2434093666665585998EB4AD9D1E29B8 /* TransitioningButton.swift in Sources */,
 				FE8AAB8E21BBE2D1009F8762 /* MatchTransitionDismissal.swift in Sources */,
