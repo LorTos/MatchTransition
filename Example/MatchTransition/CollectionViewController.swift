@@ -20,7 +20,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         CardModel(image: #imageLiteral(resourceName: "MonumentValley"), title: "Monument Valley Exploration", location: "Monument Valley, USA".uppercased(), month: "May", dates: [15, 22, 28])
     ]
     
-    let manager = MatchTransitionManager(transitionType: .modal)
+    let manager = MatchTransitionManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()

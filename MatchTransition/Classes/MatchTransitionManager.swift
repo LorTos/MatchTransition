@@ -21,7 +21,7 @@ public class MatchTransitionManager: NSObject {
         case dismissing
     }
     
-    public init(transitionType: TransitionType) {
+    public override init() {
         super.init()
         presentTransition.delegate = self
         dismissTransition.delegate = self

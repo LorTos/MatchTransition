@@ -51,12 +51,10 @@ extension NavigationToViewController: UITextFieldDelegate {
 
 extension NavigationToViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        switch operation {
-        case .pop:
+        if operation == .pop {
             return manager?.transition(for: .dismissing)
-        default:
-            navigationController.delegate = nil
-            return nil
         }
+        navigationController.delegate = nil
+        return nil
     }
 }

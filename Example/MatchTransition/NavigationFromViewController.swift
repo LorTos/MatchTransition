@@ -20,7 +20,7 @@ class NavigationFromViewController: UIViewController {
                                                      shadowImage: UIImage(),
                                                      backgroundImage: UIImage(),
                                                      isTranslucent: true)
-    let manager = MatchTransitionManager(transitionType: .push)
+    let manager = MatchTransitionManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,10 @@ class NavigationFromViewController: UIViewController {
                 Match(tag: "facebook", from: facebookButton, to: destinationVC.facebookButton),
                 Match(tag: "login", from: loginButton, to: destinationVC.loginButton)
             ]
-            manager.setupTransition(from: self, to: destinationVC, with: matches, transitionType: .push)
+            manager.setupTransition(from: self,
+                                    to: destinationVC,
+                                    with: matches,
+                                    transitionType: .push)
             navigationController?.pushViewController(destinationVC, animated: true)
         }
     }
@@ -97,12 +100,10 @@ struct NavConfig {
 
 extension NavigationFromViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        switch operation {
-        case .push:
+        if operation == .push {
             return manager.transition(for: .presenting)
-        default:
-            navigationController.delegate = nil
-            return nil
         }
+        navigationController.delegate = nil
+        return nil
     }
 }
