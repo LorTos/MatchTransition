@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="MatchTransition/Assets/Banner.svg" width="62.5%"/>
+    <img src="Example/Assets/Banner.svg" width="62.5%"/>
 </p>
 
 <p align="center">
