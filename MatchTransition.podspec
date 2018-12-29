@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name                  = 'MatchTransition'
-  s.version               = '1.0.0'
+  s.version               = '1.1.0'
   s.summary               = 'A quick and easy way to create beautiful Modal Transitions.'
 
 # This description is used to generate tags and improve search results.
