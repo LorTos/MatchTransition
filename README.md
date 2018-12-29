@@ -24,7 +24,7 @@ Using both a modal `present(UIViewController, animated: Bool, completion: nil)` 
 
 ## Example Project
 
-The project contains an example of each type of transition. To run the example project, clone the repo, and run `pod install` from the Example directory first.
+The project contains an example of each type of transition. To run the example project, clone the repo, and run `pod install` from the Example directory.
 
 <div align="center" >
     <img src="Example/Assets/exampleVid.gif" width="40%" style="margin-right: 10%"/>
