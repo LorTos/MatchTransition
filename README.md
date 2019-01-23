@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" />
+    <img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" />
     <img src="https://img.shields.io/badge/Platforms-iOS-blue.svg?style=flat" />
     <a href="https://travis-ci.org/LorTos/MatchTransition">
         <img src="https://img.shields.io/travis/LorTos/MatchTransition.svg?style=flat" />
