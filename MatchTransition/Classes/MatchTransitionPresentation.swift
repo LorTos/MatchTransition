@@ -88,7 +88,7 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
     // Mark: - Animation
     private func presentingAnimation(_ transitionContext: UIViewControllerContextTransitioning, fromView: UIView, toView: UIView) {
         let containerView = transitionContext.containerView
-        containerView.bringSubview(toFront: toView)
+        containerView.bringSubviewToFront(toView)
         
         UIView.animate(withDuration: 0.1) {
             self.blurView.effect = UIBlurEffect(style: .light)
