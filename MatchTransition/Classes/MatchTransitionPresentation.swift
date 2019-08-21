@@ -17,12 +17,12 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
     
     // MARK: - Transitioning Objects
     // Objects to move around to create transition
-    private var transitioningImages: [TransitioningImageView] = []
-    private var transitioningViews: [TransitioningView] = []
-    private var transitioningLabels: [TransitioningLabel] = []
-    private var transitioningButtons: [TransitioningButton] = []
+    private var transitioningImages: [MatchImageView] = []
+    private var transitioningViews: [MatchView] = []
+    private var transitioningLabels: [MatchLabel] = []
+    private var transitioningButtons: [MatchButton] = []
     
-    func setTransitioningObjects(views: [TransitioningView], imageViews: [TransitioningImageView], labels: [TransitioningLabel], buttons: [TransitioningButton]) {
+    func setTransitioningObjects(views: [MatchView], imageViews: [MatchImageView], labels: [MatchLabel], buttons: [MatchButton]) {
         transitioningViews = views
         transitioningImages = imageViews
         transitioningLabels = labels
@@ -37,8 +37,12 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         
-        let toView = transitionContext.view(forKey: .to)!
-        let fromView = transitionContext.view(forKey: .from)!
+        guard   let toView = transitionContext.view(forKey: .to),
+                let fromView = transitionContext.view(forKey: .from) else
+        {
+            transitionContext.completeTransition(false)
+            return
+        }
         toView.alpha = 0
         containerView.addSubview(toView)
 
@@ -76,7 +80,7 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
             transitioningButtons.forEach { button in
                 button.frame = button.initialFrame
                 button.titleLabel?.textColor = button.initialTextColor
-                button.titleLabel?.font = button.initialTextFont
+                button.titleLabel?.font = button.initialFont
                 button.backgroundColor = button.initialBackgroundColor
                 container.addSubview(button)
             }
@@ -96,12 +100,10 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
         UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.transitioningViews.forEach({ view in
                 view.frame = view.finalFrame
-                view.layer.cornerRadius = view.finalCornerRadius
                 view.backgroundColor = view.finalBackgroundColor
             })
             self.transitioningImages.forEach({ imageView in
                 imageView.frame = imageView.finalFrame
-                imageView.layer.cornerRadius = imageView.finalCornerRadius
             })
             self.transitioningLabels.forEach({ label in
                 label.frame = label.finalFrame
@@ -112,10 +114,9 @@ class MatchTransitionPresentation: NSObject, UIViewControllerAnimatedTransitioni
             })
             self.transitioningButtons.forEach({ button in
                 button.frame = button.finalFrame
-                button.titleLabel?.font = button.finalTextFont
+                button.titleLabel?.font = button.finalFont
                 button.titleLabel?.textColor = button.finalTextColor
                 button.backgroundColor = button.finalBackgroundColor
-                button.layer.cornerRadius = button.finalCornerRadius
             })
         }, completion: nil)
         UIView.animate(withDuration: 0.2, delay: transitionDuration, options: .curveEaseInOut, animations: {

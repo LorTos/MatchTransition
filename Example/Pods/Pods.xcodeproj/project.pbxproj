@@ -17,15 +17,16 @@
 		B974AB54E4B8588578342CA9A95882EE /* MatchTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 665DF2E0D1A00004C259B4B2C1BD8AD0 /* MatchTransition-dummy.m */; };
 		C880CE8D2B17442E339F28EB2E706F30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
 		F0242D0E0D12C7431723BA9B43DC752B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
+		FE105DD1230D488A00EF51C8 /* MatchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE105DD0230D488A00EF51C8 /* MatchImageView.swift */; };
+		FE105DD3230D48A900EF51C8 /* MatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE105DD2230D48A900EF51C8 /* MatchButton.swift */; };
+		FE105DD5230D48BA00EF51C8 /* TransitioningObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE105DD4230D48BA00EF51C8 /* TransitioningObject.swift */; };
+		FE105DD7230D4A5900EF51C8 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE105DD6230D4A5900EF51C8 /* MatchView.swift */; };
+		FE105DD9230D4BBD00EF51C8 /* MatchLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE105DD8230D4BBD00EF51C8 /* MatchLabel.swift */; };
 		FEA65D6C21D7099200F17FA6 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D6721D7099200F17FA6 /* Match.swift */; };
 		FEA65D6D21D7099200F17FA6 /* MatchTransitionObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D6821D7099200F17FA6 /* MatchTransitionObjectManager.swift */; };
 		FEA65D6E21D7099300F17FA6 /* MatchTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D6921D7099200F17FA6 /* MatchTransitionManager.swift */; };
 		FEA65D6F21D7099300F17FA6 /* MatchTransitionPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D6A21D7099200F17FA6 /* MatchTransitionPresentation.swift */; };
 		FEA65D7021D7099300F17FA6 /* MatchTransitionDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D6B21D7099200F17FA6 /* MatchTransitionDismissal.swift */; };
-		FEA65D7521D70AFC00F17FA6 /* TransitioningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D7121D70AFC00F17FA6 /* TransitioningLabel.swift */; };
-		FEA65D7621D70AFC00F17FA6 /* TransitioningImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D7221D70AFC00F17FA6 /* TransitioningImageView.swift */; };
-		FEA65D7721D70AFC00F17FA6 /* TransitioningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D7321D70AFC00F17FA6 /* TransitioningView.swift */; };
-		FEA65D7821D70AFC00F17FA6 /* TransitioningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA65D7421D70AFC00F17FA6 /* TransitioningButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,15 +82,16 @@
 		E49528A6622D6F73BE40B4383F5EBBAA /* Pods-MatchTransition_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MatchTransition_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E4A4749DA24111C706F767DF0A80C559 /* Pods_MatchTransition_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchTransition_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEF9E431E1F039F5F6BC98FE4060DC2 /* Pods-MatchTransition_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MatchTransition_Tests-resources.sh"; sourceTree = "<group>"; };
+		FE105DD0230D488A00EF51C8 /* MatchImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchImageView.swift; path = MatchTransition/Classes/MatchImageView.swift; sourceTree = "<group>"; };
+		FE105DD2230D48A900EF51C8 /* MatchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchButton.swift; path = MatchTransition/Classes/MatchButton.swift; sourceTree = "<group>"; };
+		FE105DD4230D48BA00EF51C8 /* TransitioningObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitioningObject.swift; path = MatchTransition/Classes/TransitioningObject.swift; sourceTree = "<group>"; };
+		FE105DD6230D4A5900EF51C8 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchView.swift; path = MatchTransition/Classes/MatchView.swift; sourceTree = "<group>"; };
+		FE105DD8230D4BBD00EF51C8 /* MatchLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchLabel.swift; path = MatchTransition/Classes/MatchLabel.swift; sourceTree = "<group>"; };
 		FEA65D6721D7099200F17FA6 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = MatchTransition/Classes/Match.swift; sourceTree = "<group>"; };
 		FEA65D6821D7099200F17FA6 /* MatchTransitionObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTransitionObjectManager.swift; path = MatchTransition/Classes/MatchTransitionObjectManager.swift; sourceTree = "<group>"; };
 		FEA65D6921D7099200F17FA6 /* MatchTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTransitionManager.swift; path = MatchTransition/Classes/MatchTransitionManager.swift; sourceTree = "<group>"; };
 		FEA65D6A21D7099200F17FA6 /* MatchTransitionPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTransitionPresentation.swift; path = MatchTransition/Classes/MatchTransitionPresentation.swift; sourceTree = "<group>"; };
 		FEA65D6B21D7099200F17FA6 /* MatchTransitionDismissal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTransitionDismissal.swift; path = MatchTransition/Classes/MatchTransitionDismissal.swift; sourceTree = "<group>"; };
-		FEA65D7121D70AFC00F17FA6 /* TransitioningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitioningLabel.swift; path = MatchTransition/Classes/TransitioningLabel.swift; sourceTree = "<group>"; };
-		FEA65D7221D70AFC00F17FA6 /* TransitioningImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitioningImageView.swift; path = MatchTransition/Classes/TransitioningImageView.swift; sourceTree = "<group>"; };
-		FEA65D7321D70AFC00F17FA6 /* TransitioningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitioningView.swift; path = MatchTransition/Classes/TransitioningView.swift; sourceTree = "<group>"; };
-		FEA65D7421D70AFC00F17FA6 /* TransitioningButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitioningButton.swift; path = MatchTransition/Classes/TransitioningButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,10 +196,11 @@
 		7E7BF6D4D29DE9261D7517A82AEEAA5C /* MatchTransition */ = {
 			isa = PBXGroup;
 			children = (
-				FEA65D7421D70AFC00F17FA6 /* TransitioningButton.swift */,
-				FEA65D7221D70AFC00F17FA6 /* TransitioningImageView.swift */,
-				FEA65D7121D70AFC00F17FA6 /* TransitioningLabel.swift */,
-				FEA65D7321D70AFC00F17FA6 /* TransitioningView.swift */,
+				FE105DD4230D48BA00EF51C8 /* TransitioningObject.swift */,
+				FE105DD2230D48A900EF51C8 /* MatchButton.swift */,
+				FE105DD0230D488A00EF51C8 /* MatchImageView.swift */,
+				FE105DD6230D4A5900EF51C8 /* MatchView.swift */,
+				FE105DD8230D4BBD00EF51C8 /* MatchLabel.swift */,
 				FEA65D6721D7099200F17FA6 /* Match.swift */,
 				FEA65D6B21D7099200F17FA6 /* MatchTransitionDismissal.swift */,
 				FEA65D6921D7099200F17FA6 /* MatchTransitionManager.swift */,
@@ -345,14 +348,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					DBB98604748752D78447373E70923149 = {
+						LastSwiftMigration = 1100;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = C7D1EFFFBC8C7556F984953CEC8F3743 /* Products */;
@@ -379,16 +388,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEA65D7721D70AFC00F17FA6 /* TransitioningView.swift in Sources */,
 				B974AB54E4B8588578342CA9A95882EE /* MatchTransition-dummy.m in Sources */,
-				FEA65D7521D70AFC00F17FA6 /* TransitioningLabel.swift in Sources */,
-				FEA65D7821D70AFC00F17FA6 /* TransitioningButton.swift in Sources */,
+				FE105DD7230D4A5900EF51C8 /* MatchView.swift in Sources */,
+				FE105DD5230D48BA00EF51C8 /* TransitioningObject.swift in Sources */,
 				FEA65D6F21D7099300F17FA6 /* MatchTransitionPresentation.swift in Sources */,
+				FE105DD3230D48A900EF51C8 /* MatchButton.swift in Sources */,
 				FEA65D6E21D7099300F17FA6 /* MatchTransitionManager.swift in Sources */,
+				FE105DD1230D488A00EF51C8 /* MatchImageView.swift in Sources */,
 				FEA65D7021D7099300F17FA6 /* MatchTransitionDismissal.swift in Sources */,
 				FEA65D6C21D7099200F17FA6 /* Match.swift in Sources */,
-				FEA65D7621D70AFC00F17FA6 /* TransitioningImageView.swift in Sources */,
 				FEA65D6D21D7099200F17FA6 /* MatchTransitionObjectManager.swift in Sources */,
+				FE105DD9230D4BBD00EF51C8 /* MatchLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -540,7 +551,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -588,6 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -674,7 +686,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

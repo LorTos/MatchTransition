@@ -17,12 +17,12 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
     
     // MARK: - Transitioning Objects
     // Objects to move around to create transition
-    private var transitioningImages: [TransitioningImageView] = []
-    private var transitioningViews: [TransitioningView] = []
-    private var transitioningLabels: [TransitioningLabel] = []
-    private var transitioningButtons: [TransitioningButton] = []
+    private var transitioningImages: [MatchImageView] = []
+    private var transitioningViews: [MatchView] = []
+    private var transitioningLabels: [MatchLabel] = []
+    private var transitioningButtons: [MatchButton] = []
     
-    func setTransitioningObjects(views: [TransitioningView], imageViews: [TransitioningImageView], labels: [TransitioningLabel], buttons: [TransitioningButton]) {
+    func setTransitioningObjects(views: [MatchView], imageViews: [MatchImageView], labels: [MatchLabel], buttons: [MatchButton]) {
         transitioningViews = views
         transitioningImages = imageViews
         transitioningLabels = labels
@@ -37,8 +37,12 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         
-        let toView = transitionContext.view(forKey: .to)!
-        let fromView = transitionContext.view(forKey: .from)!
+        guard   let toView = transitionContext.view(forKey: .to),
+                let fromView = transitionContext.view(forKey: .from) else
+        {
+            transitionContext.completeTransition(false)
+            return
+        }
         
         delegate.setFinalStateForObjects(in: fromView, direction: .dismissing)
         setupDismissalAnimation(containerView)
@@ -54,7 +58,7 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
         if let container = transitioningViews.first(where: { $0.isBaseContainer }) {
             container.frame = container.finalFrame
             container.backgroundColor = container.finalBackgroundColor
-            
+
             transitioningViews.forEach({
                 if !$0.isBaseContainer {
                     $0.frame = $0.finalFrame
@@ -62,27 +66,27 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
                     container.addSubview($0)
                 }
             })
-            
+
             transitioningImages.forEach { imageView in
                 imageView.frame = imageView.finalFrame
                 container.addSubview(imageView)
             }
-            
+
             transitioningLabels.forEach { label in
                 label.frame = label.finalFrame
                 label.font = label.finalFont
                 label.textColor = label.finalTextColor
                 container.addSubview(label)
             }
-            
+
             transitioningButtons.forEach { button in
                 button.frame = button.finalFrame
                 button.titleLabel?.textColor = button.finalTextColor
-                button.titleLabel?.font = button.finalTextFont
+                button.titleLabel?.font = button.finalFont
                 button.backgroundColor = button.finalBackgroundColor
                 container.addSubview(button)
             }
-            
+
             containerView.addSubview(container)
         }
     }
@@ -96,15 +100,12 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
             self.transitioningViews.forEach({ view in
                 view.frame = view.initialFrame
                 view.backgroundColor = view.initialBackgroundColor
-                view.layer.cornerRadius = view.initialCornerRadius
             })
             self.transitioningImages.forEach({ imageView in
                 imageView.frame = imageView.initialFrame
-                imageView.layer.cornerRadius = imageView.initialCornerRadius
             })
             self.transitioningLabels.forEach({ label in
-                guard let initialFrame = label.initialFrame else {return}
-                label.frame = initialFrame
+                label.frame = label.initialFrame
                 label.font = label.initialFont
                 if let initialColor = label.initialTextColor {
                     label.textColor = initialColor
@@ -112,10 +113,9 @@ class MatchTransitionDismissal: NSObject, UIViewControllerAnimatedTransitioning 
             })
             self.transitioningButtons.forEach({ button in
                 button.frame = button.initialFrame
-                button.titleLabel?.font = button.initialTextFont
+                button.titleLabel?.font = button.initialFont
                 button.titleLabel?.textColor = button.initialTextColor
                 button.backgroundColor = button.initialBackgroundColor
-                button.layer.cornerRadius = button.initialCornerRadius
             })
         }, completion: {_ in
             self.transitioningViews.forEach({ $0.removeFromSuperview() })

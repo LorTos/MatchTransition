@@ -12,7 +12,7 @@ protocol MatchTransitionDelegate: class {
 }
 
 public class MatchTransitionManager: NSObject {
-    public enum TransitionType {
+    public enum NavigationType {
         case modal
         case push
     }
@@ -21,12 +21,6 @@ public class MatchTransitionManager: NSObject {
         case dismissing
     }
     
-    public override init() {
-        super.init()
-        presentTransition.delegate = self
-        dismissTransition.delegate = self
-    }
-
     //MARK: - Variables
     private let presentTransition = MatchTransitionPresentation()
     private let dismissTransition = MatchTransitionDismissal()
@@ -34,50 +28,45 @@ public class MatchTransitionManager: NSObject {
     
     private var matches: [Match] = []
     
+    
+    //MARK: - Init
+    public override init() {
+        super.init()
+        presentTransition.delegate = self
+        dismissTransition.delegate = self
+    }
+
+    
     //MARK: - Initial setup
-    public func setupTransition(from cell: UITableViewCell,
-                                inside initialController: UIViewController,
-                                to finalController: UIViewController,
-                                with matches: [Match],
-                                transitionType: TransitionType)
-    {
-        setupDelegate(for: transitionType, between: initialController, and: finalController)
-        self.matches = matches
-        setTags()
-        objectManager.transitioning(.tableCell(cell))
+    public func setupTransition(from cell: UITableViewCell, inside initialController: UIViewController, to finalController: UIViewController, with matches: [Match], transitionType: NavigationType) {
+        commonSetup(type: .tableCell(cell), navigationType: transitionType, initialController: initialController, finalController: finalController, matches: matches)
     }
     
-    public func setupTransition(from cell: UICollectionViewCell,
-                                inside initialController: UIViewController,
-                                to finalController: UIViewController,
-                                with matches: [Match],
-                                transitionType: TransitionType)
-    {
-        setupDelegate(for: transitionType, between: initialController, and: finalController)
-        self.matches = matches
-        setTags()
-        objectManager.transitioning(.collectionCell(cell))
+    public func setupTransition(from cell: UICollectionViewCell, inside initialController: UIViewController, to finalController: UIViewController, with matches: [Match], transitionType: NavigationType) {
+        commonSetup(type: .collectionCell(cell), navigationType: transitionType, initialController: initialController, finalController: finalController, matches: matches)
     }
     
-    public func setupTransition(from initialController: UIViewController,
-                                to finalController: UIViewController,
-                                with matches: [Match],
-                                transitionType: TransitionType)
-    {
-        setupDelegate(for: transitionType, between: initialController, and: finalController)
-        self.matches = matches
-        setTags()
-        objectManager.transitioning(.viewController(initialController))
+    public func setupTransition(from initialController: UIViewController, to finalController: UIViewController, with matches: [Match], transitionType: NavigationType) {
+        commonSetup(type: .viewController(initialController), navigationType: transitionType, initialController: initialController, finalController: finalController, matches: matches)
     }
     
-    private func setupDelegate(for transitionType: TransitionType, between initialController: UIViewController, and finalController: UIViewController) {
+    private func commonSetup(type: MatchTransitionObjectManager.TransitionType, navigationType: NavigationType, initialController: UIViewController, finalController: UIViewController, matches: [Match]) {
+        setDelegate(for: navigationType, between: initialController, and: finalController)
+        self.matches = matches
+        setTags()
+        objectManager.transitioning(type)
+    }
+    
+    private func setDelegate(for transitionType: NavigationType, between initialController: UIViewController, and finalController: UIViewController) {
         switch transitionType {
         case .modal:
+            finalController.modalPresentationStyle = .fullScreen
             finalController.transitioningDelegate = self
         case .push:
             return
         }
     }
+    
     private func setTags() {
         objectManager.resetData()
         matches.forEach({
@@ -102,7 +91,7 @@ extension MatchTransitionManager: MatchTransitionDelegate {
             case .presenting:
                 self.presentTransition.setTransitioningObjects(views: self.objectManager.views, imageViews: self.objectManager.imageViews, labels: self.objectManager.labels, buttons: self.objectManager.buttons)
             case .dismissing:
-                self.dismissTransition.setTransitioningObjects(views: self.objectManager.views, imageViews: self.objectManager.imageViews, labels: self.objectManager.labels, buttons: self.objectManager.buttons)                
+                self.dismissTransition.setTransitioningObjects(views: self.objectManager.views, imageViews: self.objectManager.imageViews, labels: self.objectManager.labels, buttons: self.objectManager.buttons)
             }
         }
     }
@@ -112,7 +101,6 @@ extension MatchTransitionManager: MatchTransitionDelegate {
 extension MatchTransitionManager: UIViewControllerTransitioningDelegate {
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentTransition
-        
     }
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return dismissTransition

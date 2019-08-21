@@ -66,10 +66,7 @@ class NavigationFromViewController: UIViewController {
                 Match(tag: "facebook", from: facebookButton, to: destinationVC.facebookButton),
                 Match(tag: "login", from: loginButton, to: destinationVC.loginButton)
             ]
-            manager.setupTransition(from: self,
-                                    to: destinationVC,
-                                    with: matches,
-                                    transitionType: .push)
+            manager.setupTransition(from: self, to: destinationVC, with: matches, transitionType: .push)
             navigationController?.pushViewController(destinationVC, animated: true)
         }
     }

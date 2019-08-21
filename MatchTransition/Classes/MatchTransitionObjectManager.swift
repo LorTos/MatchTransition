@@ -16,21 +16,27 @@ class MatchTransitionObjectManager {
 
     private var type: TransitionType!
     
-    private(set) var tags: [Int] = []
-    
-    private(set) var views: [TransitioningView] = []
-    private(set) var imageViews: [TransitioningImageView] = []
-    private(set) var labels: [TransitioningLabel] = []
-    private(set) var buttons: [TransitioningButton] = []
+    private(set) var tags: Set<Int> = []
+    private(set) var objects: [TransitioningObject] = []
+    var buttons: [MatchButton] {
+        return objects.filter({ $0 is MatchButton }) as! [MatchButton]
+    }
+    var imageViews: [MatchImageView] {
+        return objects.filter({ $0 is MatchImageView }) as! [MatchImageView]
+    }
+    var labels: [MatchLabel] {
+        return objects.filter({ $0 is MatchLabel }) as! [MatchLabel]
+    }
+    var views: [MatchView] {
+        return objects.filter({ $0 is MatchView }) as! [MatchView]
+    }
     
     
     //MARK: - Set tags
     func setTag(_ tag: String, for view: UIView) {
         let hash = tag.hashValue
         
-        if !tags.contains(hash) {
-            tags.append(hash)
-        }
+        tags.insert(hash)
         view.tag = hash
     }
     
@@ -60,68 +66,37 @@ class MatchTransitionObjectManager {
         }
     }
     private func createTransitioningObject(_ object: UIView, ignoresSafeArea: Bool = false) {
-        switch type {
-        case .tableCell(let cell)?:
-            var convertedFrame = object.convert(object.bounds, to: cell.contentView)
-            if let button = object as? UIButton {
-                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: convertedFrame)
-                buttons.append(transitioningObject)
-            } else if let label = object as? UILabel {
-                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: convertedFrame)
-                labels.append(transitioningObject)
-            } else if let imageView = object as? UIImageView {
-                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: convertedFrame)
-                imageViews.append(transitioningObject)
-            } else {
-                let isBaseContainer = object === cell.contentView || object.tag == "container".hashValue
-                if isBaseContainer {
-                    convertedFrame = object.convert(object.bounds, to: UIScreen.main.coordinateSpace)
-                }
-                let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: convertedFrame, isBaseContainer: isBaseContainer)
-                views.append(transitioningObject)
+        func transitioningObject(_ object: UIView, baseView view: UIView) -> TransitioningObject {
+            var convertedFrame = object.convert(object.bounds, to: view)
+            var newObject: TransitioningObject
+            switch object {
+            case object as UIButton:
+                let button = object as! UIButton
+                newObject = MatchButton(button, id: button.tag, initialFrame: convertedFrame)
+            case object as UILabel:
+                let label = object as! UILabel
+                newObject = MatchLabel(label, id: label.tag, initialFrame: convertedFrame)
+            case object as UIImageView:
+                let imageView = object as! UIImageView
+                newObject = MatchImageView(imageView, id: imageView.tag, initialFrame: convertedFrame)
+            default:
+                let isBaseContainer = object === view || object.tag == "container".hashValue
+                if isBaseContainer { convertedFrame = object.convert(object.bounds, to: UIScreen.main.coordinateSpace) }
+                newObject = MatchView(object, id: object.tag, initialFrame: convertedFrame, isBaseContainer: isBaseContainer)
             }
-        case .collectionCell(let cell)?:
-            var convertedFrame = object.convert(object.bounds, to: cell.contentView)
-            if let button = object as? UIButton {
-                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: convertedFrame)
-                buttons.append(transitioningObject)
-            } else if let label = object as? UILabel {
-                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: convertedFrame)
-                labels.append(transitioningObject)
-            } else if let imageView = object as? UIImageView {
-                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: convertedFrame)
-                imageViews.append(transitioningObject)
-            } else {
-                let isBaseContainer = object === cell.contentView || object.tag == "container".hashValue
-                if isBaseContainer {
-                    convertedFrame = object.convert(object.bounds, to: UIScreen.main.coordinateSpace)
-                }
-                
-                let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: convertedFrame, isBaseContainer: isBaseContainer)
-                views.append(transitioningObject)
-            }
-        case .viewController(let controller)?:
-            var convertedFrame = object.convert(object.bounds, to: controller.view)
-            if let button = object as? UIButton {
-                let transitioningObject = TransitioningButton(with: button, id: button.tag, initialFrame: convertedFrame)
-                buttons.append(transitioningObject)
-            } else if let label = object as? UILabel {
-                let transitioningObject = TransitioningLabel(with: label, id: label.tag, initialFrame: convertedFrame)
-                labels.append(transitioningObject)
-            } else if let imageView = object as? UIImageView {
-                let transitioningObject = TransitioningImageView(with: imageView, id: imageView.tag, initialFrame: convertedFrame)
-                imageViews.append(transitioningObject)
-            } else {
-                let isBaseContainer = object === controller.view || object.tag == "container".hashValue
-                if isBaseContainer {
-                    convertedFrame = object.convert(object.bounds, to: UIScreen.main.coordinateSpace)
-                }
-                
-                let transitioningObject = TransitioningView(with: object, id: object.tag, initialFrame: convertedFrame, isBaseContainer: isBaseContainer)
-                views.append(transitioningObject)
-            }
-        default: break
+            return newObject
         }
+        
+        var newObject: TransitioningObject
+        switch type! {
+        case .tableCell(let cell):
+            newObject = transitioningObject(object, baseView: cell.contentView)
+        case .collectionCell(let cell):
+            newObject = transitioningObject(object, baseView: cell.contentView)
+        case .viewController(let controller):
+            newObject = transitioningObject(object, baseView: controller.view)
+        }
+        objects.append(newObject)
     }
     
     //MARK: - Set final state
@@ -129,26 +104,11 @@ class MatchTransitionObjectManager {
         view.layoutIfNeeded()
         
         tags.forEach { tag in
-            guard let transitioningObject = view.viewWithTag(tag) else { return }
-            let convertedFrame = transitioningObject.convert(transitioningObject.bounds, to: UIScreen.main.coordinateSpace)
+            guard   let transitioningObject = view.viewWithTag(tag),
+                    let existingView = objects.first(where: { $0.nameId == tag }) else { return }
             
-            if let button = transitioningObject as? UIButton {
-                if let existingButton = buttons.first(where: { $0.nameID == tag }) {
-                    existingButton.setFinalState(to: button, finalFrame: convertedFrame)
-                }
-            } else if let label = transitioningObject as? UILabel {
-                if let existingLabel = labels.first(where: { $0.nameID == tag }) {
-                    existingLabel.setFinalState(to: label, finalFrame: convertedFrame)
-                }
-            } else if let imageView = transitioningObject as? UIImageView {
-                if let existingImageView = imageViews.first(where: { $0.nameID == tag }) {
-                    existingImageView.setFinalState(to: imageView, finalFrame: convertedFrame)
-                }
-            } else {
-                if let existingView = views.first(where: { $0.nameID == tag }) {
-                    existingView.setFinalState(to: transitioningObject, finalFrame: convertedFrame)
-                }
-            }
+            let convertedFrame = transitioningObject.convert(transitioningObject.bounds, to: UIScreen.main.coordinateSpace)
+            existingView.setFinalState(transitioningObject, finalFrame: convertedFrame)
         }
         
         completion!()
@@ -157,9 +117,6 @@ class MatchTransitionObjectManager {
     //MARK: - Reset
     func resetData() {
         tags = []
-        views = []
-        imageViews = []
-        labels = []
-        buttons = []
+        objects = []
     }
 }

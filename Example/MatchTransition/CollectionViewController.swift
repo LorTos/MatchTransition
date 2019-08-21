@@ -78,11 +78,9 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             Match(tag: "dateView3", from: selectedCell.dateView3, to: detailsViewController.footerView.dateView3),
             Match(tag: "dateLabel3", from: selectedCell.dateLabel3, to: detailsViewController.footerView.dateLabel3)
         ]
-        manager.setupTransition(from: selectedCell,
-                                inside: self,
-                                to: detailsViewController,
-                                with: matches,
-                                transitionType: .modal)
+        
+        manager.setupTransition(from: selectedCell, inside: self, to: detailsViewController, with: matches, transitionType: .modal)
+        
         present(detailsViewController, animated: true, completion: nil)
     }
 }
