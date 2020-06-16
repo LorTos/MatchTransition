@@ -21,6 +21,7 @@
 		FE52DF4821D4DF0500974491 /* NavigationToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52DF4721D4DF0500974491 /* NavigationToViewController.swift */; };
 		FE617AB521C1C6E9002C54FC /* ExampleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE617AB421C1C6E9002C54FC /* ExampleSelectionViewController.swift */; };
 		FE617AB721C1CADB002C54FC /* NavigationFromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE617AB621C1CADB002C54FC /* NavigationFromViewController.swift */; };
+		FE8C9E8C248FE12600CF0800 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8C9E8B248FE12600CF0800 /* Utility.swift */; };
 		FEFC885E21A02AE300A6970F /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFC885D21A02AE300A6970F /* DetailsHeaderView.swift */; };
 		FEFC886021A02AF300A6970F /* DetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEFC885F21A02AF300A6970F /* DetailsHeaderView.xib */; };
 		FEFC886321A0301500A6970F /* DetailsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFC886221A0301500A6970F /* DetailsFooterView.swift */; };
@@ -64,6 +65,7 @@
 		FE52DF4721D4DF0500974491 /* NavigationToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationToViewController.swift; sourceTree = "<group>"; };
 		FE617AB421C1C6E9002C54FC /* ExampleSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSelectionViewController.swift; sourceTree = "<group>"; };
 		FE617AB621C1CADB002C54FC /* NavigationFromViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationFromViewController.swift; sourceTree = "<group>"; };
+		FE8C9E8B248FE12600CF0800 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FEFC885D21A02AE300A6970F /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
 		FEFC885F21A02AF300A6970F /* DetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsHeaderView.xib; sourceTree = "<group>"; };
 		FEFC886221A0301500A6970F /* DetailsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFooterView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
+				FE8C9E8B248FE12600CF0800 /* Utility.swift */,
 			);
 			name = Example;
 			path = MatchTransition;
@@ -387,6 +390,7 @@
 				FE617AB521C1C6E9002C54FC /* ExampleSelectionViewController.swift in Sources */,
 				FEFC885E21A02AE300A6970F /* DetailsHeaderView.swift in Sources */,
 				FE07D76220B6C09700DD2389 /* CollectionViewController.swift in Sources */,
+				FE8C9E8C248FE12600CF0800 /* Utility.swift in Sources */,
 				FE4242D120B7725200E439DB /* CardModel.swift in Sources */,
 				FE52DF4821D4DF0500974491 /* NavigationToViewController.swift in Sources */,
 				FE4242CE20B7682400E439DB /* CardCollectionViewCell.swift in Sources */,
