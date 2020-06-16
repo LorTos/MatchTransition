@@ -9,20 +9,20 @@
 import UIKit
 
 class CardModel {
-   
-   var title: String!
-   var image: UIImage!
-   var location: String!
-   
-   var month: String!
-   var nextDates: [Int]!
-   
-   init(image: UIImage, title: String, location: String, month: String, dates: [Int]) {
-      self.title = title
-      self.image = image
-      self.location = location
-      self.month = month
-      nextDates = dates
-   }
-   
+    
+    var title: String!
+    var image: UIImage!
+    var location: String!
+    
+    var month: String!
+    var nextDates: [Int]!
+    
+    init(image: UIImage, title: String, location: String, month: String, dates: [Int]) {
+        self.title = title
+        self.image = image
+        self.location = location
+        self.month = month
+        nextDates = dates
+    }
+    
 }

@@ -9,41 +9,41 @@
 import UIKit
 
 class DetailsHeaderView: UIView {
-   
-   @IBOutlet var view: UIView!
-   @IBOutlet weak var backgroundImageView: UIImageView!
-   @IBOutlet weak var titleLabel: UILabel!
-   @IBOutlet weak var locationLabel: UILabel!
-   @IBOutlet weak var locationIcon: UIImageView!
-   
-   init() {
-      super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 3/4))
-      commonInit()
-   }
-   required init?(coder aDecoder: NSCoder) {
-      fatalError("init(coder:) not implemented")
-   }
-   
-   private func commonInit() {
-      Bundle.main.loadNibNamed("DetailsHeaderView", owner: self, options: nil)
-      view.frame = bounds
-      addSubview(view)
-      
-      setupUI()
-   }
-   
-   private func setupUI() {
-      backgroundImageView.contentMode = .scaleAspectFill
-      backgroundImageView.clipsToBounds = true
-      
-      titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .bold)
-      locationLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-      [titleLabel, locationLabel].forEach({ $0?.textColor = UIColor.white })
-   }
-   
-   func setup(with card: CardModel) {
-      backgroundImageView.image = card.image
-      titleLabel.text = card.title
-      locationLabel.text = card.location.uppercased()
-   }
+
+    @IBOutlet var view: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationIcon: UIImageView!
+    
+    init() {
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 3/4))
+        commonInit()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) not implemented")
+    }
+    
+    private func commonInit() {
+        Bundle.main.loadNibNamed("DetailsHeaderView", owner: self, options: nil)
+        view.frame = bounds
+        addSubview(view)
+        
+        setupUI()
+    }
+    
+    private func setupUI() {
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.clipsToBounds = true
+        
+        titleLabel.font = UIFont.systemFont(ofSize: 36, weight: .bold)
+        locationLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        [titleLabel, locationLabel].forEach({ $0?.textColor = UIColor.white })
+    }
+    
+    func setup(with card: CardModel) {
+        backgroundImageView.image = card.image
+        titleLabel.text = card.title
+        locationLabel.text = card.location.uppercased()
+    }
 }
