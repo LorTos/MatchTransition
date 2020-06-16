@@ -65,6 +65,7 @@ class MatchTransitionObjectManager {
             }
         }
     }
+   
     private func createTransitioningObject(_ object: UIView, ignoresSafeArea: Bool = false) {
         func transitioningObject(_ object: UIView, baseView view: UIView) -> TransitioningObject {
             var convertedFrame = object.convert(object.bounds, to: view)
